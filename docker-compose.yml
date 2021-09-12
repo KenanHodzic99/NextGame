@@ -1,0 +1,33 @@
+version: '3'
+services:
+#mssql docker
+  nextgame-sql:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=QWElkj132!
+      - MSSQL_PID=Developer
+    ports:
+      - 1401:1433
+    networks:
+      - nextgamenet
+
+  nextgame-api:
+    restart: unless-stopped
+    build:
+      context: .
+    environment:
+      - ConnectionStrings:DefaultConnectionString=Server=nextgame-sql,1433;Database=180082;User=sa;Password=QWElkj132!;ConnectRetryCount=0
+    ports:
+      - 5010:5010
+    networks:
+      - nextgamenet      
+    links:
+      - nextgame-sql
+    depends_on:
+      - nextgame-sql
+      
+networks:
+  nextgamenet:
+    driver: bridge     

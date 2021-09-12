@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Image Name="Logo">
+            <Source>Embedded</Source>
+            <Value>NextGameLogo</Value>
+            <Sizing>FitProportional</Sizing>
+            <Top>0.29104cm</Top>
+            <Left>0.46356cm</Left>
+            <Height>3.11078cm</Height>
+            <Width>3.59021cm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+          <Textbox Name="Textbox2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>IZVJEŠTAJ O NAJBOLJE OCJENJENOJ IGRICI NA APLIKACIJI</Value>
+                    <Style>
+                      <FontSize>20pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>0.58208cm</Top>
+            <Left>4.5212cm</Left>
+            <Height>2.81974cm</Height>
+            <Width>11.09896cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!OpisIgrice.Value</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>5.89703cm</Top>
+            <Left>0.46356cm</Left>
+            <Height>1.79104cm</Height>
+            <Width>15.1566cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Ukupno igrana </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Parameters!SatiIgrice.Value</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>h od strane </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Parameters!BrojKorisnikaKojiSuIgrali.Value</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value> korisnika.</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox4</rd:DefaultName>
+            <Top>9.49537cm</Top>
+            <Left>0.46356cm</Left>
+            <Height>0.73229cm</Height>
+            <Width>15.1566cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox5">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Izdavačka kuća:  </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Parameters!IzdavackaKuca.Value</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>   Datum izlaska: </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Parameters!DatumIzlaska.Value</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>  Ocjena:</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Parameters!OcjenaIgre.Value</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>/5</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox4</rd:DefaultName>
+            <Top>8.24604cm</Top>
+            <Left>0.46356cm</Left>
+            <Height>0.73229cm</Height>
+            <Width>15.1566cm</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox6">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Izvještaj objavljen: </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Parameters!DatumReporta.Value</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox6</rd:DefaultName>
+            <Top>12.7762cm</Top>
+            <Left>9.81287cm</Left>
+            <Height>0.6cm</Height>
+            <Width>5.80729cm</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox7">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!NazivIgrice.Value</Value>
+                    <Style>
+                      <FontSize>15pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>3.91266cm</Top>
+            <Left>0.46356cm</Left>
+            <Height>1.63188cm</Height>
+            <Width>15.1566cm</Width>
+            <ZIndex>6</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <Height>5.40625in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>2cm</LeftMargin>
+        <RightMargin>2cm</RightMargin>
+        <TopMargin>2cm</TopMargin>
+        <BottomMargin>2cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="NazivIgrice">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SatiIgrice">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="OpisIgrice">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="IzdavackaKuca">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DatumIzlaska">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DatumReporta">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="OcjenaIgre">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="BrojKorisnikaKojiSuIgrali">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>3</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>NazivIgrice</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>SatiIgrice</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>OpisIgrice</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>IzdavackaKuca</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>DatumIzlaska</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>DatumReporta</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>OcjenaIgre</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>BrojKorisnikaKojiSuIgrali</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="NextGameLogo">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>c30b40e7-cf22-4f46-8a60-f9987b9fbe61</rd:ReportID>
+</Report>
