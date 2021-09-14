@@ -25,7 +25,7 @@ namespace NextGame.WindowsUI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://localhost:44320/api/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://localhost:5010/api/")]
         public string ApiUrl {
             get {
                 return ((string)(this["ApiUrl"]));
