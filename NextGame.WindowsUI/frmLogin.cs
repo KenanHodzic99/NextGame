@@ -28,9 +28,8 @@ namespace NextGame.WindowsUI
                 frmPocetna frm = new frmPocetna();
                 frm.Show();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
                 MessageBox.Show("Netačan username ili password!");
             }
 

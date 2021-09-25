@@ -62,7 +62,7 @@ namespace NextGame
                 Slika = SlikaProfilna,
                 PasswordHash = "3d1j4ZonisbPUUkZQ0rLnH/UtVs=",
                 PasswordSalt = "SnPlHFCIEJ7qZ9ng3mrTSw==",
-                Username = "admin",
+                Username = "user5",
                 DatumRođenja = DateTime.Now
             };
 

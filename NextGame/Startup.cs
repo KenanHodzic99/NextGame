@@ -60,7 +60,7 @@ namespace NextGame
                     }
                 });
             });
-            services.AddDbContext<NextGame.Database.NextGameDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
+            services.AddDbContext<NextGame.Database.NextGameDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("NextGame")));
             services.AddScoped<IKorisnikService, KorisnikService>();
             services.AddScoped<IIzdavackaKucaService, IzdavackaKucaService>();
             services.AddScoped<ISystemRequirementsService, SystemRequirementsService>();
