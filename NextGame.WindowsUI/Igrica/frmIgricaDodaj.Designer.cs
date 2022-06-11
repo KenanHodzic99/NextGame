@@ -35,7 +35,6 @@ namespace NextGame.WindowsUI.Igrica
             this.label2 = new System.Windows.Forms.Label();
             this.cbIzdavackaKuca = new System.Windows.Forms.ComboBox();
             this.nudCijena = new System.Windows.Forms.NumericUpDown();
-            this.txtZanr = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dtpDatumIzdavanja = new System.Windows.Forms.DateTimePicker();
             this.btnSysReq = new System.Windows.Forms.Button();
@@ -43,7 +42,6 @@ namespace NextGame.WindowsUI.Igrica
             this.label7 = new System.Windows.Forms.Label();
             this.txtOpis = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtTip = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,6 +56,8 @@ namespace NextGame.WindowsUI.Igrica
             this.epCijena = new System.Windows.Forms.ErrorProvider(this.components);
             this.epSlika = new System.Windows.Forms.ErrorProvider(this.components);
             this.epOpis = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cbTip = new System.Windows.Forms.ComboBox();
+            this.clbZanr = new System.Windows.Forms.CheckedListBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCijena)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIgra)).BeginInit();
@@ -85,10 +85,11 @@ namespace NextGame.WindowsUI.Igrica
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.clbZanr);
+            this.panel1.Controls.Add(this.cbTip);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.cbIzdavackaKuca);
             this.panel1.Controls.Add(this.nudCijena);
-            this.panel1.Controls.Add(this.txtZanr);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.dtpDatumIzdavanja);
             this.panel1.Controls.Add(this.btnSysReq);
@@ -96,7 +97,6 @@ namespace NextGame.WindowsUI.Igrica
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.txtOpis);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.txtTip);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label1);
@@ -105,7 +105,7 @@ namespace NextGame.WindowsUI.Igrica
             this.panel1.Controls.Add(this.pbIgra);
             this.panel1.Location = new System.Drawing.Point(10, 37);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(638, 466);
+            this.panel1.Size = new System.Drawing.Size(634, 489);
             this.panel1.TabIndex = 2;
             // 
             // label2
@@ -127,24 +127,16 @@ namespace NextGame.WindowsUI.Igrica
             // 
             // nudCijena
             // 
-            this.nudCijena.Location = new System.Drawing.Point(433, 132);
+            this.nudCijena.Location = new System.Drawing.Point(216, 184);
             this.nudCijena.Name = "nudCijena";
             this.nudCijena.Size = new System.Drawing.Size(177, 20);
             this.nudCijena.TabIndex = 26;
             this.nudCijena.Validating += new System.ComponentModel.CancelEventHandler(this.nudCijena_Validating);
             // 
-            // txtZanr
-            // 
-            this.txtZanr.Location = new System.Drawing.Point(433, 74);
-            this.txtZanr.Name = "txtZanr";
-            this.txtZanr.Size = new System.Drawing.Size(177, 20);
-            this.txtZanr.TabIndex = 24;
-            this.txtZanr.Validating += new System.ComponentModel.CancelEventHandler(this.txtZanr_Validating);
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(433, 58);
+            this.label8.Location = new System.Drawing.Point(432, 58);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 13);
             this.label8.TabIndex = 23;
@@ -160,7 +152,7 @@ namespace NextGame.WindowsUI.Igrica
             // 
             // btnSysReq
             // 
-            this.btnSysReq.Location = new System.Drawing.Point(433, 165);
+            this.btnSysReq.Location = new System.Drawing.Point(433, 209);
             this.btnSysReq.Name = "btnSysReq";
             this.btnSysReq.Size = new System.Drawing.Size(177, 20);
             this.btnSysReq.TabIndex = 21;
@@ -199,19 +191,11 @@ namespace NextGame.WindowsUI.Igrica
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(433, 116);
+            this.label5.Location = new System.Drawing.Point(216, 165);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = "Cijena:";
-            // 
-            // txtTip
-            // 
-            this.txtTip.Location = new System.Drawing.Point(433, 25);
-            this.txtTip.Name = "txtTip";
-            this.txtTip.Size = new System.Drawing.Size(177, 20);
-            this.txtTip.TabIndex = 10;
-            this.txtTip.Validating += new System.ComponentModel.CancelEventHandler(this.txtTip_Validating);
             // 
             // label6
             // 
@@ -299,11 +283,27 @@ namespace NextGame.WindowsUI.Igrica
             // 
             this.epOpis.ContainerControl = this;
             // 
+            // cbTip
+            // 
+            this.cbTip.FormattingEnabled = true;
+            this.cbTip.Location = new System.Drawing.Point(433, 25);
+            this.cbTip.Name = "cbTip";
+            this.cbTip.Size = new System.Drawing.Size(177, 21);
+            this.cbTip.TabIndex = 29;
+            // 
+            // clbZanr
+            // 
+            this.clbZanr.FormattingEnabled = true;
+            this.clbZanr.Location = new System.Drawing.Point(433, 74);
+            this.clbZanr.Name = "clbZanr";
+            this.clbZanr.Size = new System.Drawing.Size(177, 124);
+            this.clbZanr.TabIndex = 30;
+            // 
             // frmIgricaDodaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 504);
+            this.ClientSize = new System.Drawing.Size(654, 527);
             this.Controls.Add(this.lblIzdavackaKuca);
             this.Controls.Add(this.panel1);
             this.Name = "frmIgricaDodaj";
@@ -333,7 +333,6 @@ namespace NextGame.WindowsUI.Igrica
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RichTextBox txtOpis;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtTip;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
@@ -343,7 +342,6 @@ namespace NextGame.WindowsUI.Igrica
         private System.Windows.Forms.DateTimePicker dtpDatumIzdavanja;
         private System.Windows.Forms.Button btnSysReq;
         private System.Windows.Forms.NumericUpDown nudCijena;
-        private System.Windows.Forms.TextBox txtZanr;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.OpenFileDialog ofdSlika;
         private System.Windows.Forms.Label label2;
@@ -355,5 +353,7 @@ namespace NextGame.WindowsUI.Igrica
         private System.Windows.Forms.ErrorProvider epCijena;
         private System.Windows.Forms.ErrorProvider epSlika;
         private System.Windows.Forms.ErrorProvider epOpis;
+        private System.Windows.Forms.ComboBox cbTip;
+        private System.Windows.Forms.CheckedListBox clbZanr;
     }
 }

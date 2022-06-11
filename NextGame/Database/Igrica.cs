@@ -17,8 +17,9 @@ namespace NextGame.Database
         public DateTime DatumIzdavanja { get; set; }
         public int IzdavackaKucaId { get; set; }
         public IzdavackaKuca IzdavackaKuca { get; set; }
-        public string Tip { get; set; }
+        public Tip Tip { get; set; }
         public float Cijena { get; set; }
-        public string Zanrovi { get; set; }
+        public ICollection<Zanr> Zanrovi { get; set; }
+        public ICollection<Platforma> Platforme { get; set; }
     }
 }

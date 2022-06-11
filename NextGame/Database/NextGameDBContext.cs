@@ -24,5 +24,8 @@ namespace NextGame.Database
         public DbSet<Adresa> Adrese { get; set; }
         public DbSet<Kontakt> Kontakti { get; set; }
         public DbSet<KorisniciUloge> KorisniciUloge { get; set; }
+        public DbSet<Zanr> Zanrovi { get; set; }
+        public DbSet<Tip> Tipovi { get; set; }
+        public DbSet<Platforma> Platforme { get; set; }
     }
 }

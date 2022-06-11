@@ -14,9 +14,10 @@ namespace NextGame.Model
         public SystemRequirements SystemRequirements { get; set; }
         public DateTime DatumIzdavanja { get; set; }
         public IzdavackaKuca IzdavackaKuca { get; set; }
-        public string Tip { get; set; }
+        public Tip Tip { get; set; }
         public float Cijena { get; set; }
-        public string Zanrovi { get; set; }
+        public List<Zanr> Zanrovi { get; set; }
+        public List<Platforma> Platforme { get; set; }
 
         public override string ToString()
         {

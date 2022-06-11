@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace NextGame.Models.Requests.Igrica
 {
@@ -11,8 +12,10 @@ namespace NextGame.Models.Requests.Igrica
         public Models.SystemRequirements SystemRequirements { get; set; }
         public DateTime DatumIzdavanja { get; set; }
         public int IzdavackaKucaId { get; set; }
-        public string Tip { get; set; }
+        public Tip Tip { get; set; }
         public float Cijena { get; set; }
-        public string Zanrovi { get; set; }
+        public List<Zanr> Zanrovi { get; set; }
+        public List<Platforma> Platforme { get; set; }
+
     }
 }

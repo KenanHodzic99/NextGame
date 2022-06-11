@@ -49,7 +49,17 @@ namespace NextGame.Services
 
             if (!string.IsNullOrWhiteSpace(search?.Tip))
             {
-                entity = entity.Where(x => x.Tip.Contains(search.Tip));
+                entity = entity.Where(x => x.Tip.Naziv.Contains(search.Tip));
+            }
+
+            if (!string.IsNullOrWhiteSpace(search?.Zanr))
+            {
+                entity = entity.Where(x => x.Zanrovi.Where(x => x.Naziv.Contains(search.Tip)).ToList().Count > 0);
+            }
+
+            if (!string.IsNullOrWhiteSpace(search?.Platforma))
+            {
+                entity = entity.Where(x => x.Platforme.Where(x => x.Naziv.Contains(search.Tip)).ToList().Count > 0);
             }
 
             if (search.Ocjena.HasValue)
@@ -78,7 +88,7 @@ namespace NextGame.Services
             entity.SystemRequirementsId = sysReq.Id;
             entity.SystemRequirements = sysReq;
 
-            entity.Zanrovi = request.Zanrovi;
+            //entity.Zanrovi = request.Zanrovi;
 
             setIgrica.Add(entity);
             _dbContext.SaveChanges();
@@ -99,7 +109,7 @@ namespace NextGame.Services
             sysReqentity = _mapper.Map<SystemRequirements>(request.SystemRequirements);
 
 
-            entity.Zanrovi = request.Zanrovi;
+            //entity.Zanrovi = request.Zanrovi;
 
 
             _dbContext.SaveChanges();

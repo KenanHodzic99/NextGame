@@ -12,6 +12,8 @@ namespace NextGame.Model.Requests.Igrica
         public int? GodinaIzdavanja { get; set; }
         public string IzdavackaKuca { get; set; }
         public string Tip { get; set; }
+        public string Zanr { get; set; }
+        public string Platforma { get; set; }
         public float? Cijena { get; set; }
     }
 }

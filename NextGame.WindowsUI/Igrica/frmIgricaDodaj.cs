@@ -1,4 +1,5 @@
-﻿using NextGame.Models.Requests.Igrica;
+﻿using NextGame.Models;
+using NextGame.Models.Requests.Igrica;
 using NextGame.WindowsUI.Properties;
 using NextGame.WindowsUI.System_Requirements;
 using System;
@@ -7,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -17,6 +19,9 @@ namespace NextGame.WindowsUI.Igrica
         public static Models.SystemRequirements SysReq = new Models.SystemRequirements();
         private APIService _service = new APIService("Igrica");
         private APIService _izdavackaKuceService = new APIService("IzdavackaKuca");
+        private APIService _tipService = new APIService("Tip");
+        private APIService _zanrService = new APIService("Zanr");
+
         public Models.Igrica _entity;
         public bool isUcitana = false;
         public frmIgricaDodaj(Models.Igrica entity = null)
@@ -38,6 +43,7 @@ namespace NextGame.WindowsUI.Igrica
         {
             if (_entity != null)
             {
+             
                 IgricaUpdateRequest request = new IgricaUpdateRequest()
                 {
                     SystemRequirements = SysReq,
@@ -46,8 +52,8 @@ namespace NextGame.WindowsUI.Igrica
                     IzdavackaKucaId = int.Parse(cbIzdavackaKuca.SelectedValue.ToString()),
                     Naziv = txtNaziv.Text,
                     Opis = txtOpis.Text,
-                    Tip = txtTip.Text,
-                    Zanrovi = txtZanr.Text
+                    Tip = cbTip.SelectedItem as Tip,
+                    Zanrovi = (List<Zanr>)clbZanr.CheckedItems.Cast<Models.Zanr>()
                 };
                 if (isUcitana)
                 {
@@ -86,8 +92,8 @@ namespace NextGame.WindowsUI.Igrica
                             IzdavackaKucaId = int.Parse(cbIzdavackaKuca.SelectedValue.ToString()),
                             Naziv = txtNaziv.Text,
                             Opis = txtOpis.Text,
-                            Tip = txtTip.Text,
-                            Zanrovi = txtZanr.Text
+                    Tip = cbTip.SelectedItem as Tip,
+                    Zanrovi = (List<Zanr>)clbZanr.CheckedItems.Cast<Models.Zanr>()
                         };
                         request.Slika = System.IO.File.ReadAllBytes(pbIgra.ImageLocation);
                         MessageBox.Show("Uspjesno ste dodali igricu", "Igrica");
@@ -108,6 +114,13 @@ namespace NextGame.WindowsUI.Igrica
             cbIzdavackaKuca.DisplayMember = "Naziv";
             cbIzdavackaKuca.ValueMember = "Id";
 
+            cbTip.DataSource = await _tipService.GetAll<List<Tip>>(null);
+            cbTip.DisplayMember = "Naziv";
+            cbTip.ValueMember = "Id";
+
+            clbZanr.DataSource = await _zanrService.GetAll<List<Zanr>>(null);
+            clbZanr.DisplayMember = "Naziv";
+
             if (_entity != null) 
             {
                 pbIgra.Image = Image.FromStream(new MemoryStream(Convert.FromBase64String(Convert.ToBase64String(_entity.Slika))));
@@ -121,8 +134,11 @@ namespace NextGame.WindowsUI.Igrica
                 cbIzdavackaKuca.SelectedValue = _entity.IzdavackaKuca.Id;
                 txtNaziv.Text = _entity.Naziv;
                 txtOpis.Text = _entity.Opis;
-                txtTip.Text = _entity.Tip;
-                txtZanr.Text = _entity.Zanrovi;
+                cbTip.SelectedIndex = _entity.Tip.Id;
+                foreach(Zanr zanr in _entity.Zanrovi)
+                {
+                    clbZanr.SetItemChecked(zanr.Id, true);
+                }
             }
 
         }
@@ -145,26 +161,26 @@ namespace NextGame.WindowsUI.Igrica
             }
         }
 
-        private void txtTip_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtTip.Text))
-                epTip.SetError(txtTip, Properties.Resources.ObavezanUnosPolja);
-            else
-                epTip.Clear();
-        }
+        //private void txtTip_Validating(object sender, CancelEventArgs e)
+        //{
+        //    if (string.IsNullOrWhiteSpace(txtTip.Text))
+        //        epTip.SetError(txtTip, Properties.Resources.ObavezanUnosPolja);
+        //    else
+        //        epTip.Clear();
+        //}
 
         private void dtpDatumIzdavanja_Validating(object sender, CancelEventArgs e)
         {
             
         }
 
-        private void txtZanr_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtZanr.Text))
-                epZanr.SetError(txtZanr, Properties.Resources.ObavezanUnosPolja);
-            else
-                epZanr.Clear();
-        }
+        //private void txtZanr_Validating(object sender, CancelEventArgs e)
+        //{
+        //    if (string.IsNullOrWhiteSpace(txtZanr.Text))
+        //        epZanr.SetError(txtZanr, Properties.Resources.ObavezanUnosPolja);
+        //    else
+        //        epZanr.Clear();
+        //}
 
         private void nudCijena_Validating(object sender, CancelEventArgs e)
         {

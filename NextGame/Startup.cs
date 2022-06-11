@@ -1,23 +1,16 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using NextGame.Filters;
 using NextGame.Security;
 using NextGame.Services;
 using NextGame.Services.Adresa;
 using NextGame.Services.Kontakt;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using NextGame.Services.ListaIgrica;
 
 namespace NextGame
@@ -72,6 +65,9 @@ namespace NextGame
             services.AddScoped<IKomentarService, KomentarService>();
             services.AddScoped<IObjavaService, ObjavaService>();
             services.AddScoped<IRecenzijaService, RecenzijaService>();
+            services.AddScoped<IZanrService, ZanrService>();
+            services.AddScoped<ITipService, TipService>();
+            services.AddScoped<IPlatformaService, PlatformaService>();
 
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);

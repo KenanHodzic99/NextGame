@@ -216,6 +216,85 @@ namespace NextGame
 
             context.SystemRequirements.Add(sys1);
 
+            var znr1 = new Zanr()
+            {
+                Id = 1,
+                Naziv = "Battle Royale"
+            };
+
+            var znr2 = new Zanr()
+            {
+                Id = 2,
+                Naziv = "Action"
+            };
+
+            var znr3 = new Zanr()
+            {
+                Id = 3,
+                Naziv = "Adventure"
+            };
+
+            var znr4 = new Zanr()
+            {
+                Id = 4,
+                Naziv = "Strategy and Tactic"
+            };
+
+            var znr5 = new Zanr()
+            {
+                Id = 5,
+                Naziv = "Horror"
+            };
+
+            var znr6 = new Zanr()
+            {
+                Id = 6,
+                Naziv = "Sports"
+            };
+
+            context.Zanrovi.Add(znr1);
+            context.Zanrovi.Add(znr2);
+            context.Zanrovi.Add(znr3);
+            context.Zanrovi.Add(znr4);
+            context.Zanrovi.Add(znr5);
+            context.Zanrovi.Add(znr6);
+
+            var tip1 = new Tip() 
+            {
+                Id = 1,
+                Naziv = "Sandbox"
+            };
+
+            var tip2 = new Tip()
+            {
+                Id = 2,
+                Naziv = "Real-time strategy (RTS)"
+            };
+
+            var tip3 = new Tip()
+            {
+                Id = 3,
+                Naziv = "Shooters (FPS and TPS)"
+            };
+
+            var tip4 = new Tip()
+            {
+                Id = 4,
+                Naziv = "Multiplayer online battle arena (MOBA)"
+            };
+
+            var tip5 = new Tip()
+            {
+                Id = 5,
+                Naziv = "Role-playing (RPG, ARPG, and More)"
+            };
+
+            context.Tipovi.Add(tip1);
+            context.Tipovi.Add(tip2);
+            context.Tipovi.Add(tip3);
+            context.Tipovi.Add(tip4);
+            context.Tipovi.Add(tip5);
+
             context.Entry<KorisniciUloge>(ku1).State = EntityState.Detached;
             context.Entry<KorisniciUloge>(ku2).State = EntityState.Detached;
             context.Entry<KorisniciUloge>(ku3).State = EntityState.Detached;
@@ -226,6 +305,19 @@ namespace NextGame
             context.Entry<IzdavackaKuca>(ik2).State = EntityState.Detached;
 
             context.Entry<SystemRequirements>(sys1).State = EntityState.Detached;
+
+            context.Entry<Zanr>(znr1).State = EntityState.Detached;
+            context.Entry<Zanr>(znr2).State = EntityState.Detached;
+            context.Entry<Zanr>(znr3).State = EntityState.Detached;
+            context.Entry<Zanr>(znr4).State = EntityState.Detached;
+            context.Entry<Zanr>(znr5).State = EntityState.Detached;
+            context.Entry<Zanr>(znr6).State = EntityState.Detached;
+
+            context.Entry<Tip>(tip1).State = EntityState.Detached;
+            context.Entry<Tip>(tip2).State = EntityState.Detached;
+            context.Entry<Tip>(tip3).State = EntityState.Detached;
+            context.Entry<Tip>(tip4).State = EntityState.Detached;
+            context.Entry<Tip>(tip5).State = EntityState.Detached;
 
             context.SaveChanges();
 
@@ -241,9 +333,9 @@ namespace NextGame
                 DatumIzdavanja = DateTime.Now,
                 IzdavackaKuca = ik2,
                 IzdavackaKucaId = 2,
-                Tip = "FPS",
+                Tip = tip3,
                 Cijena = 60,
-                Zanrovi = "Akcija, Sci-Fi",
+                Zanrovi = new List<Zanr>() { znr2, znr4 },
             };
 
             var igrica2 = new Igrica()
@@ -258,9 +350,9 @@ namespace NextGame
                 DatumIzdavanja = DateTime.Now,
                 IzdavackaKuca = ik2,
                 IzdavackaKucaId = 2,
-                Tip = "FPS",
+                Tip = tip2,
                 Cijena = 60,
-                Zanrovi = "Akcija, Sci-Fi",
+                Zanrovi = new List<Zanr>() { znr3, znr4 },
             };
 
             var igrica3 = new Igrica()
@@ -275,9 +367,9 @@ namespace NextGame
                 DatumIzdavanja = DateTime.Now,
                 IzdavackaKuca = ik2,
                 IzdavackaKucaId = 2,
-                Tip = "FPS",
+                Tip = tip3,
                 Cijena = 60,
-                Zanrovi = "Akcija, Sci-Fi",
+                Zanrovi = new List<Zanr>() { znr2, znr4 },
             };
 
             var igrica4 = new Igrica()
@@ -292,9 +384,9 @@ namespace NextGame
                 DatumIzdavanja = DateTime.Now,
                 IzdavackaKuca = ik2,
                 IzdavackaKucaId = 2,
-                Tip = "FPS",
+                Tip = tip4,
                 Cijena = 60,
-                Zanrovi = "Akcija, Sci-Fi",
+                Zanrovi = new List<Zanr>() { znr2, znr3, znr4 },
             };
 
             var igrica5 = new Igrica()
@@ -309,9 +401,9 @@ namespace NextGame
                 DatumIzdavanja = DateTime.Now,
                 IzdavackaKuca = ik1,
                 IzdavackaKucaId = 1,
-                Tip = "FPS",
+                Tip = tip3,
                 Cijena = 60,
-                Zanrovi = "Akcija, Sci-Fi",
+                Zanrovi = new List<Zanr>() { znr2, znr4 },
             };
 
             var igrica6 = new Igrica()
@@ -326,9 +418,9 @@ namespace NextGame
                 DatumIzdavanja = DateTime.Now,
                 IzdavackaKuca = ik1,
                 IzdavackaKucaId = 1,
-                Tip = "FPS",
+                Tip = tip3,
                 Cijena = 60,
-                Zanrovi = "Akcija, Sci-Fi",
+                Zanrovi = new List<Zanr>() { znr2, znr3 },
             };
 
             var igrica7 = new Igrica()
@@ -343,9 +435,9 @@ namespace NextGame
                 DatumIzdavanja = DateTime.Now,
                 IzdavackaKuca = ik1,
                 IzdavackaKucaId = 1,
-                Tip = "FPS",
+                Tip = tip3,
                 Cijena = 60,
-                Zanrovi = "Akcija, Sci-Fi",
+                Zanrovi = new List<Zanr>() { znr2, znr3 },
             };
 
             var igrica8 = new Igrica()
@@ -360,9 +452,9 @@ namespace NextGame
                 DatumIzdavanja = DateTime.Now,
                 IzdavackaKuca = ik1,
                 IzdavackaKucaId = 1,
-                Tip = "FPS",
+                Tip = tip3,
                 Cijena = 60,
-                Zanrovi = "Akcija, Sci-Fi",
+                Zanrovi = new List<Zanr>() { znr2, znr3, znr4 },
             };
 
             context.Igrice.Add(igrica1);

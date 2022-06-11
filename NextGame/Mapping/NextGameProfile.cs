@@ -39,6 +39,18 @@ namespace NextGame.Mapping
             CreateMap<Uloga, Model.Requests.UlogaIZanr.UlogaInsertRequest>().ReverseMap();
             CreateMap<Uloga, Model.Requests.UlogaIZanr.UlogaUpdateRequest>().ReverseMap();
 
+            CreateMap<Zanr, Model.Zanr>().ReverseMap();
+            CreateMap<Zanr, Model.Requests.UlogaIZanr.UlogaInsertRequest>().ReverseMap();
+            CreateMap<Zanr, Model.Requests.UlogaIZanr.UlogaUpdateRequest>().ReverseMap();
+
+            CreateMap<Tip, Model.Tip>().ReverseMap();
+            CreateMap<Tip, Model.Requests.UlogaIZanr.UlogaInsertRequest>().ReverseMap();
+            CreateMap<Tip, Model.Requests.UlogaIZanr.UlogaUpdateRequest>().ReverseMap();
+
+            CreateMap<Platforma, Model.Platforma>().ReverseMap();
+            CreateMap<Platforma, Model.Requests.UlogaIZanr.UlogaInsertRequest>().ReverseMap();
+            CreateMap<Platforma, Model.Requests.UlogaIZanr.UlogaUpdateRequest>().ReverseMap();
+
             CreateMap<Igrica, Model.Igrica>().ReverseMap();
             CreateMap<Igrica, Model.Requests.Igrica.IgricaInsertRequest>().ReverseMap();
             CreateMap<Igrica, Model.Requests.Igrica.IgricaUpdateRequest>().ReverseMap();
