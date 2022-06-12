@@ -1,9 +1,5 @@
 ﻿using AutoMapper;
 using NextGame.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NextGame.Mapping
 {
@@ -68,6 +64,10 @@ namespace NextGame.Mapping
             CreateMap<Recenzija, Model.Requests.Recenzija.RecenzijaUpdateRequest>().ReverseMap();
 
             CreateMap<KorisniciUloge, Model.KorisniciUloge>().ReverseMap();
+
+            CreateMap<IgricaPlatforma, Model.IgricaPlatforma>().ReverseMap();
+
+            CreateMap<IgricaZanr, Model.IgricaZanr>().ReverseMap();
         }
     }
 }

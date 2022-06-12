@@ -32,6 +32,15 @@ namespace NextGame.WindowsUI.IzdavackaKuca
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtNaziv.Text) || txtNaziv.Text.Length < 2 || nudBrojZaposlenika.Value < 0 || nudBrojZaposlenika.Value == 0 || string.IsNullOrWhiteSpace(txtOsnivaci.Text) || txtOsnivaci.Text.Length < 4 
+                || string.IsNullOrWhiteSpace(txtMjestoOsnivanja.Text) || txtMjestoOsnivanja.Text.Length < 2 || string.IsNullOrWhiteSpace(txtSjediste.Text) || txtSjediste.Text.Length < 2
+                || string.IsNullOrWhiteSpace(txtOpis.Text) || txtOpis.Text.Length < 10)
+            {
+                MessageBox.Show("Molimo provjerite da li ste korektno unijeli sve podatke!", "Izdavačka kuća");
+                this.Validate();
+                return;
+            }
+
             if (_entity != null)
             {
                 IzdavackaKucaUpdateRequest request = new IzdavackaKucaUpdateRequest() 
@@ -109,14 +118,14 @@ namespace NextGame.WindowsUI.IzdavackaKuca
         private void txtNaziv_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNaziv.Text))
-                epNaziv.SetError(txtNaziv, Properties.Resources.ObavezanUnosPolja);
+                epNaziv.SetError(txtNaziv, Properties.Resources.ObavezanUnosPolja + " Minimalno 2 karaktera!");
             else
                 epNaziv.Clear();
         }
 
         private void nudBrojZaposlenika_Validating(object sender, CancelEventArgs e)
         {
-            if (nudBrojZaposlenika.Value<0||nudBrojZaposlenika.Value==0)
+            if (nudBrojZaposlenika.Value < 0 || nudBrojZaposlenika.Value == 0)
                 epBrojZaposlenika.SetError(nudBrojZaposlenika, Properties.Resources.ObavezanUnosPolja);
             else
                 epBrojZaposlenika.Clear();
@@ -125,7 +134,7 @@ namespace NextGame.WindowsUI.IzdavackaKuca
         private void txtOsnivaci_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtOsnivaci.Text))
-                epOsnivaci.SetError(txtOsnivaci, Properties.Resources.ObavezanUnosPolja);
+                epOsnivaci.SetError(txtOsnivaci, Properties.Resources.ObavezanUnosPolja + " Minimalno 4 karaktera!");
             else
                 epOsnivaci.Clear();
         }
@@ -133,7 +142,7 @@ namespace NextGame.WindowsUI.IzdavackaKuca
         private void txtMjestoOsnivanja_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtMjestoOsnivanja.Text))
-                epMjestoOsnivanja.SetError(txtMjestoOsnivanja, Properties.Resources.ObavezanUnosPolja);
+                epMjestoOsnivanja.SetError(txtMjestoOsnivanja, Properties.Resources.ObavezanUnosPolja + " Minimalno 2 karaktera!");
             else
                 epMjestoOsnivanja.Clear();
         }
@@ -141,7 +150,7 @@ namespace NextGame.WindowsUI.IzdavackaKuca
         private void txtSjediste_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtSjediste.Text))
-                epSjediste.SetError(txtSjediste, Properties.Resources.ObavezanUnosPolja);
+                epSjediste.SetError(txtSjediste, Properties.Resources.ObavezanUnosPolja + " Minimalno 2 karaktera!");
             else
                 epSjediste.Clear();
         }
@@ -149,7 +158,7 @@ namespace NextGame.WindowsUI.IzdavackaKuca
         private void txtOpis_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtOpis.Text))
-                epOpis.SetError(txtOpis, Properties.Resources.ObavezanUnosPolja);
+                epOpis.SetError(txtOpis, Properties.Resources.ObavezanUnosPolja + " Minimalno 10 karaktera!");
             else
                 epOpis.Clear();
         }

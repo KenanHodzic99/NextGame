@@ -47,10 +47,10 @@ namespace NextGame.WindowsUI.IzdavackaKuca
             // lblIzdavackaKuca
             // 
             this.lblIzdavackaKuca.AutoSize = true;
-            this.lblIzdavackaKuca.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblIzdavackaKuca.Location = new System.Drawing.Point(12, 9);
+            this.lblIzdavackaKuca.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 18F);
+            this.lblIzdavackaKuca.Location = new System.Drawing.Point(10, 8);
             this.lblIzdavackaKuca.Name = "lblIzdavackaKuca";
-            this.lblIzdavackaKuca.Size = new System.Drawing.Size(205, 32);
+            this.lblIzdavackaKuca.Size = new System.Drawing.Size(206, 32);
             this.lblIzdavackaKuca.TabIndex = 2;
             this.lblIzdavackaKuca.Text = "IZDAVAČKA KUĆA";
             // 
@@ -62,16 +62,16 @@ namespace NextGame.WindowsUI.IzdavackaKuca
             this.panel1.Controls.Add(this.txtMjestoOsnivanja);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtNaziv);
-            this.panel1.Location = new System.Drawing.Point(12, 45);
+            this.panel1.Location = new System.Drawing.Point(10, 39);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(744, 525);
+            this.panel1.Size = new System.Drawing.Size(638, 455);
             this.panel1.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(4, 4);
+            this.label3.Font = new System.Drawing.Font("Arial", 15F);
+            this.label3.Location = new System.Drawing.Point(3, 3);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 23);
             this.label3.TabIndex = 5;
@@ -79,9 +79,9 @@ namespace NextGame.WindowsUI.IzdavackaKuca
             // 
             // btnPretrazi
             // 
-            this.btnPretrazi.Location = new System.Drawing.Point(594, 67);
+            this.btnPretrazi.Location = new System.Drawing.Point(512, 58);
             this.btnPretrazi.Name = "btnPretrazi";
-            this.btnPretrazi.Size = new System.Drawing.Size(147, 23);
+            this.btnPretrazi.Size = new System.Drawing.Size(126, 20);
             this.btnPretrazi.TabIndex = 4;
             this.btnPretrazi.Text = "Pretraži";
             this.btnPretrazi.UseVisualStyleBackColor = true;
@@ -90,41 +90,41 @@ namespace NextGame.WindowsUI.IzdavackaKuca
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(316, 46);
+            this.label2.Location = new System.Drawing.Point(267, 42);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 15);
+            this.label2.Size = new System.Drawing.Size(89, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Mjesto osnivanja:";
             // 
             // txtMjestoOsnivanja
             // 
-            this.txtMjestoOsnivanja.Location = new System.Drawing.Point(315, 67);
+            this.txtMjestoOsnivanja.Location = new System.Drawing.Point(270, 58);
             this.txtMjestoOsnivanja.Name = "txtMjestoOsnivanja";
-            this.txtMjestoOsnivanja.Size = new System.Drawing.Size(232, 23);
+            this.txtMjestoOsnivanja.Size = new System.Drawing.Size(199, 20);
             this.txtMjestoOsnivanja.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 46);
+            this.label1.Location = new System.Drawing.Point(-3, 43);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 15);
+            this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Naziv:";
             // 
             // txtNaziv
             // 
-            this.txtNaziv.Location = new System.Drawing.Point(3, 67);
+            this.txtNaziv.Location = new System.Drawing.Point(0, 59);
             this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(232, 23);
+            this.txtNaziv.Size = new System.Drawing.Size(199, 20);
             this.txtNaziv.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.dgvIzdavackaKuca);
-            this.panel2.Location = new System.Drawing.Point(12, 141);
+            this.panel2.Location = new System.Drawing.Point(10, 122);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(744, 429);
+            this.panel2.Size = new System.Drawing.Size(638, 372);
             this.panel2.TabIndex = 0;
             // 
             // dgvIzdavackaKuca
@@ -137,15 +137,15 @@ namespace NextGame.WindowsUI.IzdavackaKuca
             this.dgvIzdavackaKuca.Name = "dgvIzdavackaKuca";
             this.dgvIzdavackaKuca.ReadOnly = true;
             this.dgvIzdavackaKuca.RowTemplate.Height = 25;
-            this.dgvIzdavackaKuca.Size = new System.Drawing.Size(744, 429);
+            this.dgvIzdavackaKuca.Size = new System.Drawing.Size(638, 372);
             this.dgvIzdavackaKuca.TabIndex = 0;
             this.dgvIzdavackaKuca.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIzdavackaKuca_CellDoubleClick);
             // 
             // frmIzdavackaKucaPrikaz
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 582);
+            this.ClientSize = new System.Drawing.Size(658, 504);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblIzdavackaKuca);

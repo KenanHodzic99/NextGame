@@ -30,8 +30,11 @@ namespace NextGame
             services.AddControllers(x =>
             {
                 x.Filters.Add<ErrorFilters>();
-                
-            });
+
+
+            }).AddNewtonsoftJson(options => 
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
 
             services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(c=> 

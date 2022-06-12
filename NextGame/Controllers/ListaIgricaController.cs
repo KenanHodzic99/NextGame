@@ -1,11 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using NextGame.Model.Requests.ListaIgrica;
+﻿using NextGame.Model.Requests.ListaIgrica;
 using NextGame.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NextGame.Model;
 
 namespace NextGame.Controllers
 {

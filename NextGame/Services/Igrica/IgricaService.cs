@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Trainers;
-using NextGame.Migrations;
+//using NextGame.Migrations;
 
 namespace NextGame.Services
 {
@@ -24,7 +24,7 @@ namespace NextGame.Services
 
         public override IEnumerable<Model.Igrica> GetAll(IgricaSearchRequest search = null)
         {
-            var entity = _dbContext.Set<Igrica>().Include(x => x.IzdavackaKuca).Include(x => x.SystemRequirements)
+            var entity = _dbContext.Set<Igrica>().Include(x => x.IzdavackaKuca).Include(x => x.SystemRequirements).Include(x => x.Zanrovi).Include(x => x.Tip).Include(x => x.Platforme)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search?.Naziv))
@@ -54,12 +54,20 @@ namespace NextGame.Services
 
             if (!string.IsNullOrWhiteSpace(search?.Zanr))
             {
-                entity = entity.Where(x => x.Zanrovi.Where(x => x.Naziv.Contains(search.Tip)).ToList().Count > 0);
+                var zanr = _dbContext.Zanrovi.Where(x => x.Naziv.Contains(search.Zanr)).SingleOrDefault();
+                if (zanr != null)
+                    entity = entity.Where(x => x.Zanrovi.Where(x => x.ZanrId == zanr.Id).ToList().Count > 0);
+                else
+                    entity = entity.Where(x => x.Cijena == -10);
             }
 
             if (!string.IsNullOrWhiteSpace(search?.Platforma))
             {
-                entity = entity.Where(x => x.Platforme.Where(x => x.Naziv.Contains(search.Tip)).ToList().Count > 0);
+                var platforma = _dbContext.Platforme.Where(x => x.Naziv.Contains(search.Platforma)).SingleOrDefault();
+                if (platforma != null)
+                    entity = entity.Where(x => x.Platforme.Where(x => x.PlatformaId == platforma.Id).ToList().Count > 0);
+                else
+                    entity = entity.Where(x => x.Cijena == -10);
             }
 
             if (search.Ocjena.HasValue)
@@ -76,6 +84,8 @@ namespace NextGame.Services
         {
             var setIgrica = _dbContext.Set<Igrica>();
             var setSysReq = _dbContext.Set<SystemRequirements>();
+            var setPlatforma = _dbContext.Set<IgricaPlatforma>();
+            var setZanr = _dbContext.Set<IgricaZanr>();
 
             var entity = _mapper.Map<Igrica>(request);
 
@@ -88,7 +98,29 @@ namespace NextGame.Services
             entity.SystemRequirementsId = sysReq.Id;
             entity.SystemRequirements = sysReq;
 
-            //entity.Zanrovi = request.Zanrovi;
+            entity.Tip = _mapper.Map<Tip>(request.Tip);
+
+            foreach (var zanr in request.ZanroviId)
+            {
+                var igricaZanr = new IgricaZanr()
+                {
+                    IgricaId = entity.Id,
+                    ZanrId = zanr
+                };
+                setZanr.Add(igricaZanr);
+                entity.Zanrovi.Add(igricaZanr);
+            }
+
+            foreach (var platforma in request.PlatformeId)
+            {
+                var igricaPlatforma = new IgricaPlatforma()
+                {
+                    IgricaId = entity.Id,
+                    PlatformaId = platforma,
+                };
+                setPlatforma.Add(igricaPlatforma);
+                entity.Platforme.Add(igricaPlatforma);
+            }
 
             setIgrica.Add(entity);
             _dbContext.SaveChanges();
@@ -100,6 +132,57 @@ namespace NextGame.Services
         {
             var entity = _dbContext.Igrice.Find(id);
 
+            var entityZanrovi = _dbContext.IgriceZanrovi.Where(x => x.IgricaId == entity.Id);
+            var remove = new List<IgricaZanr>();
+            foreach (var entityZanr in entityZanrovi)
+            {
+                bool removeZanr = false;
+                foreach (var zanrid in request.ZanroviId)
+                {
+                    if(entityZanr.ZanrId == zanrid)
+                    {
+                        removeZanr = false;
+                        break;
+                    }
+                    removeZanr = true;
+                }
+                if (removeZanr)
+                {
+                    remove.Add(entityZanr);
+                }
+            }
+            foreach(var toRemove in remove)
+            {
+                entity.Zanrovi.Remove(toRemove);
+            }
+            _dbContext.IgriceZanrovi.RemoveRange(remove);
+
+            var entityPlatforme = _dbContext.IgricePlatforme.Where(x => x.IgricaId == entity.Id);
+            var removePlatorme = new List<IgricaPlatforma>();
+            foreach (var entityPlatforma in entityPlatforme)
+            {
+                bool removePlatforma = false;
+                foreach (var platformaId in request.PlatformeId)
+                {
+                    if (entityPlatforma.PlatformaId == platformaId)
+                    {
+                        removePlatforma = false;
+                        break;
+                    }
+                    removePlatforma = true;
+                }
+                if (removePlatforma)
+                {
+                    removePlatorme.Add(entityPlatforma);
+                }
+            }
+            foreach (var toRemove in removePlatorme)
+            {
+                entity.Platforme.Remove(toRemove);
+            }
+            _dbContext.IgricePlatforme.RemoveRange(removePlatorme);
+
+
             _mapper.Map(request, entity);
 
             entity.IzdavackaKucaId = request.IzdavackaKucaId;
@@ -108,9 +191,29 @@ namespace NextGame.Services
             var sysReqentity = _dbContext.SystemRequirements.Find(entity.SystemRequirementsId);
             sysReqentity = _mapper.Map<SystemRequirements>(request.SystemRequirements);
 
+            entity.Tip = _mapper.Map<Tip>(request.Tip);
 
-            //entity.Zanrovi = request.Zanrovi;
+            foreach (var zanr in request.ZanroviId)
+            {
+                var igricaZanr = _dbContext.IgriceZanrovi.Find(entity.Id, zanr);
+                if(igricaZanr == null)
+                {
+                    var newEntry = new IgricaZanr() { IgricaId = entity.Id, ZanrId = zanr };
+                    _dbContext.IgriceZanrovi.Add(newEntry);
+                    entity.Zanrovi.Add(newEntry);
+                }
+            }
 
+            foreach (var platforma in request.PlatformeId)
+            {
+                var igricaPlatforma = _dbContext.IgricePlatforme.Find(entity.Id, platforma);
+                if (igricaPlatforma == null)
+                {
+                    var newEntry = new IgricaPlatforma() { IgricaId = entity.Id, PlatformaId = platforma };
+                    _dbContext.IgricePlatforme.Add(newEntry);
+                    entity.Platforme.Add(newEntry);
+                }
+            }
 
             _dbContext.SaveChanges();
             return _mapper.Map<Model.Igrica>(entity);
@@ -129,7 +232,7 @@ namespace NextGame.Services
                 foreach (var user in tempKorisnici)
                 {
                     var tempData = _dbContext.ListaIgrica.Include(x => x.Igrica).Include(x => x.Igrica.IzdavackaKuca)
-                        .Include(x => x.Korisnik).Include(x => x.Igrica.SystemRequirements)
+                        .Include(x => x.Korisnik).Include(x => x.Igrica.SystemRequirements).Include(x => x.Igrica.Tip).Include(x=>x.Igrica.Platforme).Include(x=>x.Igrica.Zanrovi)
                         .Where(x => x.Korisnik.Id == user.Id).ToList();
 
                     foreach (var x in tempData)

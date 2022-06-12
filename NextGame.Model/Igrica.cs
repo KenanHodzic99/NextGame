@@ -16,8 +16,8 @@ namespace NextGame.Model
         public IzdavackaKuca IzdavackaKuca { get; set; }
         public Tip Tip { get; set; }
         public float Cijena { get; set; }
-        public List<Zanr> Zanrovi { get; set; }
-        public List<Platforma> Platforme { get; set; }
+        public List<IgricaZanr> Zanrovi { get; set; }
+        public List<IgricaPlatforma> Platforme { get; set; }
 
         public override string ToString()
         {

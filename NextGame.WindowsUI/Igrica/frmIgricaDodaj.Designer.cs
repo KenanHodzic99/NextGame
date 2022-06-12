@@ -32,6 +32,10 @@ namespace NextGame.WindowsUI.Igrica
             this.components = new System.ComponentModel.Container();
             this.lblIzdavackaKuca = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.clbPlatforme = new System.Windows.Forms.CheckedListBox();
+            this.clbZanr = new System.Windows.Forms.CheckedListBox();
+            this.cbTip = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbIzdavackaKuca = new System.Windows.Forms.ComboBox();
             this.nudCijena = new System.Windows.Forms.NumericUpDown();
@@ -56,8 +60,6 @@ namespace NextGame.WindowsUI.Igrica
             this.epCijena = new System.Windows.Forms.ErrorProvider(this.components);
             this.epSlika = new System.Windows.Forms.ErrorProvider(this.components);
             this.epOpis = new System.Windows.Forms.ErrorProvider(this.components);
-            this.cbTip = new System.Windows.Forms.ComboBox();
-            this.clbZanr = new System.Windows.Forms.CheckedListBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCijena)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIgra)).BeginInit();
@@ -85,6 +87,8 @@ namespace NextGame.WindowsUI.Igrica
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.clbPlatforme);
             this.panel1.Controls.Add(this.clbZanr);
             this.panel1.Controls.Add(this.cbTip);
             this.panel1.Controls.Add(this.label2);
@@ -108,26 +112,59 @@ namespace NextGame.WindowsUI.Igrica
             this.panel1.Size = new System.Drawing.Size(634, 489);
             this.panel1.TabIndex = 2;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(216, 88);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 13);
+            this.label4.TabIndex = 32;
+            this.label4.Text = "Platforme:";
+            // 
+            // clbPlatforme
+            // 
+            this.clbPlatforme.FormattingEnabled = true;
+            this.clbPlatforme.Location = new System.Drawing.Point(219, 104);
+            this.clbPlatforme.Name = "clbPlatforme";
+            this.clbPlatforme.Size = new System.Drawing.Size(177, 109);
+            this.clbPlatforme.TabIndex = 31;
+            // 
+            // clbZanr
+            // 
+            this.clbZanr.FormattingEnabled = true;
+            this.clbZanr.Location = new System.Drawing.Point(447, 100);
+            this.clbZanr.Name = "clbZanr";
+            this.clbZanr.Size = new System.Drawing.Size(177, 124);
+            this.clbZanr.TabIndex = 30;
+            // 
+            // cbTip
+            // 
+            this.cbTip.FormattingEnabled = true;
+            this.cbTip.Location = new System.Drawing.Point(447, 60);
+            this.cbTip.Name = "cbTip";
+            this.cbTip.Size = new System.Drawing.Size(177, 21);
+            this.cbTip.TabIndex = 29;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(216, 115);
+            this.label2.Location = new System.Drawing.Point(444, 7);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 13);
+            this.label2.Size = new System.Drawing.Size(88, 13);
             this.label2.TabIndex = 28;
-            this.label2.Text = "IzdavackaKuca:";
+            this.label2.Text = "Izdavacka Kuca:";
             // 
             // cbIzdavackaKuca
             // 
             this.cbIzdavackaKuca.FormattingEnabled = true;
-            this.cbIzdavackaKuca.Location = new System.Drawing.Point(216, 131);
+            this.cbIzdavackaKuca.Location = new System.Drawing.Point(447, 20);
             this.cbIzdavackaKuca.Name = "cbIzdavackaKuca";
             this.cbIzdavackaKuca.Size = new System.Drawing.Size(177, 21);
             this.cbIzdavackaKuca.TabIndex = 27;
             // 
             // nudCijena
             // 
-            this.nudCijena.Location = new System.Drawing.Point(216, 184);
+            this.nudCijena.Location = new System.Drawing.Point(219, 232);
             this.nudCijena.Name = "nudCijena";
             this.nudCijena.Size = new System.Drawing.Size(177, 20);
             this.nudCijena.TabIndex = 26;
@@ -136,7 +173,7 @@ namespace NextGame.WindowsUI.Igrica
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(432, 58);
+            this.label8.Location = new System.Drawing.Point(444, 84);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 13);
             this.label8.TabIndex = 23;
@@ -144,7 +181,7 @@ namespace NextGame.WindowsUI.Igrica
             // 
             // dtpDatumIzdavanja
             // 
-            this.dtpDatumIzdavanja.Location = new System.Drawing.Point(216, 74);
+            this.dtpDatumIzdavanja.Location = new System.Drawing.Point(219, 61);
             this.dtpDatumIzdavanja.Name = "dtpDatumIzdavanja";
             this.dtpDatumIzdavanja.Size = new System.Drawing.Size(177, 20);
             this.dtpDatumIzdavanja.TabIndex = 22;
@@ -152,9 +189,9 @@ namespace NextGame.WindowsUI.Igrica
             // 
             // btnSysReq
             // 
-            this.btnSysReq.Location = new System.Drawing.Point(433, 209);
+            this.btnSysReq.Location = new System.Drawing.Point(447, 232);
             this.btnSysReq.Name = "btnSysReq";
-            this.btnSysReq.Size = new System.Drawing.Size(177, 20);
+            this.btnSysReq.Size = new System.Drawing.Size(178, 20);
             this.btnSysReq.TabIndex = 21;
             this.btnSysReq.Text = "Dodaj hardverske zahtjeve";
             this.btnSysReq.UseVisualStyleBackColor = true;
@@ -162,7 +199,7 @@ namespace NextGame.WindowsUI.Igrica
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(520, 433);
+            this.btnSave.Location = new System.Drawing.Point(520, 458);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(104, 20);
             this.btnSave.TabIndex = 19;
@@ -173,7 +210,7 @@ namespace NextGame.WindowsUI.Igrica
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(5, 216);
+            this.label7.Location = new System.Drawing.Point(3, 242);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(31, 13);
             this.label7.TabIndex = 17;
@@ -181,9 +218,9 @@ namespace NextGame.WindowsUI.Igrica
             // 
             // txtOpis
             // 
-            this.txtOpis.Location = new System.Drawing.Point(5, 234);
+            this.txtOpis.Location = new System.Drawing.Point(6, 258);
             this.txtOpis.Name = "txtOpis";
-            this.txtOpis.Size = new System.Drawing.Size(619, 181);
+            this.txtOpis.Size = new System.Drawing.Size(619, 194);
             this.txtOpis.TabIndex = 16;
             this.txtOpis.Text = "";
             this.txtOpis.Validating += new System.ComponentModel.CancelEventHandler(this.txtOpis_Validating);
@@ -191,7 +228,7 @@ namespace NextGame.WindowsUI.Igrica
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(216, 165);
+            this.label5.Location = new System.Drawing.Point(216, 216);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 13);
             this.label5.TabIndex = 11;
@@ -200,7 +237,7 @@ namespace NextGame.WindowsUI.Igrica
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(433, 10);
+            this.label6.Location = new System.Drawing.Point(444, 44);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 13);
             this.label6.TabIndex = 9;
@@ -209,7 +246,7 @@ namespace NextGame.WindowsUI.Igrica
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(216, 58);
+            this.label3.Location = new System.Drawing.Point(216, 42);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 13);
             this.label3.TabIndex = 7;
@@ -218,7 +255,7 @@ namespace NextGame.WindowsUI.Igrica
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(216, 7);
+            this.label1.Location = new System.Drawing.Point(216, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 3;
@@ -226,7 +263,7 @@ namespace NextGame.WindowsUI.Igrica
             // 
             // txtNaziv
             // 
-            this.txtNaziv.Location = new System.Drawing.Point(216, 25);
+            this.txtNaziv.Location = new System.Drawing.Point(219, 19);
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(177, 20);
             this.txtNaziv.TabIndex = 2;
@@ -234,7 +271,7 @@ namespace NextGame.WindowsUI.Igrica
             // 
             // btnSlika
             // 
-            this.btnSlika.Location = new System.Drawing.Point(3, 184);
+            this.btnSlika.Location = new System.Drawing.Point(16, 204);
             this.btnSlika.Name = "btnSlika";
             this.btnSlika.Size = new System.Drawing.Size(183, 20);
             this.btnSlika.TabIndex = 1;
@@ -244,7 +281,7 @@ namespace NextGame.WindowsUI.Igrica
             // 
             // pbIgra
             // 
-            this.pbIgra.Location = new System.Drawing.Point(3, 3);
+            this.pbIgra.Location = new System.Drawing.Point(16, 20);
             this.pbIgra.Name = "pbIgra";
             this.pbIgra.Size = new System.Drawing.Size(183, 174);
             this.pbIgra.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -282,22 +319,6 @@ namespace NextGame.WindowsUI.Igrica
             // epOpis
             // 
             this.epOpis.ContainerControl = this;
-            // 
-            // cbTip
-            // 
-            this.cbTip.FormattingEnabled = true;
-            this.cbTip.Location = new System.Drawing.Point(433, 25);
-            this.cbTip.Name = "cbTip";
-            this.cbTip.Size = new System.Drawing.Size(177, 21);
-            this.cbTip.TabIndex = 29;
-            // 
-            // clbZanr
-            // 
-            this.clbZanr.FormattingEnabled = true;
-            this.clbZanr.Location = new System.Drawing.Point(433, 74);
-            this.clbZanr.Name = "clbZanr";
-            this.clbZanr.Size = new System.Drawing.Size(177, 124);
-            this.clbZanr.TabIndex = 30;
             // 
             // frmIgricaDodaj
             // 
@@ -355,5 +376,7 @@ namespace NextGame.WindowsUI.Igrica
         private System.Windows.Forms.ErrorProvider epOpis;
         private System.Windows.Forms.ComboBox cbTip;
         private System.Windows.Forms.CheckedListBox clbZanr;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckedListBox clbPlatforme;
     }
 }

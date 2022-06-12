@@ -54,6 +54,8 @@
   <ItemGroup>
     <Compile Include="Adresa.cs" />
     <Compile Include="Igrica.cs" />
+    <Compile Include="IgricaPlatforma.cs" />
+    <Compile Include="IgricaZanr.cs" />
     <Compile Include="IzdavackaKuca.cs" />
     <Compile Include="Komentar.cs" />
     <Compile Include="Kontakt.cs" />

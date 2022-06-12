@@ -91,7 +91,7 @@ namespace NextGame.WindowsUI.Recenzije
             // 
             // btnPretrazi
             // 
-            this.btnPretrazi.Location = new System.Drawing.Point(509, 58);
+            this.btnPretrazi.Location = new System.Drawing.Point(512, 58);
             this.btnPretrazi.Name = "btnPretrazi";
             this.btnPretrazi.Size = new System.Drawing.Size(126, 20);
             this.btnPretrazi.TabIndex = 4;

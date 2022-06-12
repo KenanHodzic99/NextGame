@@ -19,7 +19,7 @@ namespace NextGame.Database
         public IzdavackaKuca IzdavackaKuca { get; set; }
         public Tip Tip { get; set; }
         public float Cijena { get; set; }
-        public ICollection<Zanr> Zanrovi { get; set; }
-        public ICollection<Platforma> Platforme { get; set; }
+        public ICollection<IgricaZanr> Zanrovi { get; set; }
+        public ICollection<IgricaPlatforma> Platforme { get; set; }
     }
 }

@@ -86,7 +86,7 @@ namespace NextGame.WindowsUI
             this.sideMenuPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.sideMenuPanel.Location = new System.Drawing.Point(0, 0);
             this.sideMenuPanel.Name = "sideMenuPanel";
-            this.sideMenuPanel.Size = new System.Drawing.Size(214, 567);
+            this.sideMenuPanel.Size = new System.Drawing.Size(214, 556);
             this.sideMenuPanel.TabIndex = 0;
             // 
             // panelSubmenuIzvjestaj
@@ -468,17 +468,18 @@ namespace NextGame.WindowsUI
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChildForm.Location = new System.Drawing.Point(214, 0);
             this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(629, 567);
+            this.panelChildForm.Size = new System.Drawing.Size(682, 556);
             this.panelChildForm.TabIndex = 1;
             // 
             // frmPocetna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(843, 567);
+            this.ClientSize = new System.Drawing.Size(896, 556);
             this.Controls.Add(this.panelChildForm);
             this.Controls.Add(this.sideMenuPanel);
             this.Name = "frmPocetna";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NextGame";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.sideMenuPanel.ResumeLayout(false);

@@ -10,8 +10,8 @@ using NextGame.Database;
 namespace NextGame.Migrations
 {
     [DbContext(typeof(NextGameDBContext))]
-    [Migration("20220611155107_addedNewTables")]
-    partial class addedNewTables
+    [Migration("20220612155139_final")]
+    partial class final
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -88,6 +88,36 @@ namespace NextGame.Migrations
                     b.HasIndex("TipId");
 
                     b.ToTable("Igrice");
+                });
+
+            modelBuilder.Entity("NextGame.Database.IgricaPlatforma", b =>
+                {
+                    b.Property<int>("IgricaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PlatformaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("IgricaId", "PlatformaId");
+
+                    b.HasIndex("PlatformaId");
+
+                    b.ToTable("IgricePlatforme");
+                });
+
+            modelBuilder.Entity("NextGame.Database.IgricaZanr", b =>
+                {
+                    b.Property<int>("IgricaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ZanrId")
+                        .HasColumnType("int");
+
+                    b.HasKey("IgricaId", "ZanrId");
+
+                    b.HasIndex("ZanrId");
+
+                    b.ToTable("IgriceZanrovi");
                 });
 
             modelBuilder.Entity("NextGame.Database.IzdavackaKuca", b =>
@@ -310,15 +340,10 @@ namespace NextGame.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("IgricaId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Naziv")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("IgricaId");
 
                     b.ToTable("Platforme");
                 });
@@ -424,15 +449,10 @@ namespace NextGame.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("IgricaId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Naziv")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("IgricaId");
 
                     b.ToTable("Zanrovi");
                 });
@@ -452,7 +472,7 @@ namespace NextGame.Migrations
                         .IsRequired();
 
                     b.HasOne("NextGame.Database.Tip", "Tip")
-                        .WithMany()
+                        .WithMany("Igrice")
                         .HasForeignKey("TipId");
 
                     b.Navigation("IzdavackaKuca");
@@ -460,6 +480,36 @@ namespace NextGame.Migrations
                     b.Navigation("SystemRequirements");
 
                     b.Navigation("Tip");
+                });
+
+            modelBuilder.Entity("NextGame.Database.IgricaPlatforma", b =>
+                {
+                    b.HasOne("NextGame.Database.Igrica", null)
+                        .WithMany("Platforme")
+                        .HasForeignKey("IgricaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NextGame.Database.Platforma", null)
+                        .WithMany("Igrice")
+                        .HasForeignKey("PlatformaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("NextGame.Database.IgricaZanr", b =>
+                {
+                    b.HasOne("NextGame.Database.Igrica", null)
+                        .WithMany("Zanrovi")
+                        .HasForeignKey("IgricaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NextGame.Database.Zanr", null)
+                        .WithMany("Igrice")
+                        .HasForeignKey("ZanrId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("NextGame.Database.Komentar", b =>
@@ -543,13 +593,6 @@ namespace NextGame.Migrations
                     b.Navigation("Igrica");
                 });
 
-            modelBuilder.Entity("NextGame.Database.Platforma", b =>
-                {
-                    b.HasOne("NextGame.Database.Igrica", null)
-                        .WithMany("Platforme")
-                        .HasForeignKey("IgricaId");
-                });
-
             modelBuilder.Entity("NextGame.Database.Recenzija", b =>
                 {
                     b.HasOne("NextGame.Database.Igrica", "Igrica")
@@ -569,13 +612,6 @@ namespace NextGame.Migrations
                     b.Navigation("Korisnik");
                 });
 
-            modelBuilder.Entity("NextGame.Database.Zanr", b =>
-                {
-                    b.HasOne("NextGame.Database.Igrica", null)
-                        .WithMany("Zanrovi")
-                        .HasForeignKey("IgricaId");
-                });
-
             modelBuilder.Entity("NextGame.Database.Igrica", b =>
                 {
                     b.Navigation("Platforme");
@@ -588,9 +624,24 @@ namespace NextGame.Migrations
                     b.Navigation("Uloge");
                 });
 
+            modelBuilder.Entity("NextGame.Database.Platforma", b =>
+                {
+                    b.Navigation("Igrice");
+                });
+
+            modelBuilder.Entity("NextGame.Database.Tip", b =>
+                {
+                    b.Navigation("Igrice");
+                });
+
             modelBuilder.Entity("NextGame.Database.Uloga", b =>
                 {
                     b.Navigation("KorisniciUloge");
+                });
+
+            modelBuilder.Entity("NextGame.Database.Zanr", b =>
+                {
+                    b.Navigation("Igrice");
                 });
 #pragma warning restore 612, 618
         }

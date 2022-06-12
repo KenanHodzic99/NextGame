@@ -38,7 +38,12 @@ namespace NextGame.WindowsUI.Objava
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            
+            if (string.IsNullOrWhiteSpace(txtNaslov.Text) || txtNaslov.Text.Length < 5 || string.IsNullOrWhiteSpace(txtAutor.Text) || txtNaslov.Text.Length < 5 || string.IsNullOrWhiteSpace(txtOpis.Text) || txtOpis.Text.Length < 10)
+            {
+                MessageBox.Show("Molimo provjerite da li ste korektno unijeli sve podatke!", "Objava");
+                this.Validate();
+                return;
+            }
 
             if (_entity != null)
             {
@@ -73,7 +78,7 @@ namespace NextGame.WindowsUI.Objava
         private void txtNaslov_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNaslov.Text))
-                epNaslov.SetError(txtNaslov, Properties.Resources.ObavezanUnosPolja);
+                epNaslov.SetError(txtNaslov, Properties.Resources.ObavezanUnosPolja + " Minimalno 5 karaktera!");
             else
                 epNaslov.Clear();
         }
@@ -81,7 +86,7 @@ namespace NextGame.WindowsUI.Objava
         private void txtAutor_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtAutor.Text))
-                epAutor.SetError(txtAutor, Properties.Resources.ObavezanUnosPolja);
+                epAutor.SetError(txtAutor, Properties.Resources.ObavezanUnosPolja + " Minimalno 5 karaktera!");
             else
                 epAutor.Clear();
         }
@@ -89,7 +94,7 @@ namespace NextGame.WindowsUI.Objava
         private void txtOpis_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtOpis.Text))
-                epSadrzaj.SetError(txtOpis, Properties.Resources.ObavezanUnosPolja);
+                epSadrzaj.SetError(txtOpis, Properties.Resources.ObavezanUnosPolja + " Minimalno 10 karaktera!");
             else
                 epSadrzaj.Clear();
         }

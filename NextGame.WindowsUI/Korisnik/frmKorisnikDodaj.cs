@@ -1,4 +1,5 @@
-﻿using NextGame.Models.Requests.Korisnik;
+﻿using NextGame.Models;
+using NextGame.Models.Requests.Korisnik;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,6 +36,16 @@ namespace NextGame.WindowsUI.Korisnik
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtUsername.Text) || txtUsername.Text.Length < 4 || string.IsNullOrWhiteSpace(txtPassword.Text) || txtPassword.Text.Length < 4
+                || string.IsNullOrWhiteSpace(txtPassword2.Text) || !txtPassword.Text.Equals(txtPassword2.Text) || txtPassword2.Text.Length < 4
+                || string.IsNullOrWhiteSpace(txtOpis.Text) || txtOpis.Text.Length < 10)
+            {
+                MessageBox.Show("Molimo provjerite da li ste korektno unijeli sve podatke!", "Upozorenje");
+                this.Validate();
+                return;
+            }
+
+
             if(txtPassword.Text != txtPassword2.Text)
             {
                 if (MessageBox.Show("Passwordi nisu isti!", "Upozorenje") == DialogResult.OK)
@@ -100,10 +111,12 @@ namespace NextGame.WindowsUI.Korisnik
         {
             clbUloge.DataSource = await _ulogaService.GetAll<List<Models.Uloga>>(null);
             clbUloge.DisplayMember = "Naziv";
+            clbUloge.ValueMember = "Id";
+
+
 
             if (_entity != null)
             {
-                
                 if (_entity.DatumRođenja.ToString() != "1. 1. 0001. 00:00:00")
                 {
                     dtpDatumRodenja.Value = _entity.DatumRođenja;
@@ -116,6 +129,12 @@ namespace NextGame.WindowsUI.Korisnik
                 txtPassword2.Visible = false;
                 txtUsername.Text = _entity.Username;
                 txtUsername.ReadOnly = true;
+
+                foreach (KorisniciUloge uloga in _entity.Uloge)
+                {
+                    clbUloge.SetItemChecked(uloga.UlogaId - 1, true);
+                }
+
                 pbSlika.Image = Image.FromStream(new MemoryStream(Convert.FromBase64String(Convert.ToBase64String(_entity.Slika))));
             }
         }
@@ -123,7 +142,7 @@ namespace NextGame.WindowsUI.Korisnik
         private void txtUsername_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtUsername.Text))
-                epUsername.SetError(txtUsername, Properties.Resources.ObavezanUnosPolja);
+                epUsername.SetError(txtUsername, Properties.Resources.ObavezanUnosPolja + " Minimalno 4 karaktera!");
             else
                 epUsername.Clear();
         }
@@ -131,7 +150,7 @@ namespace NextGame.WindowsUI.Korisnik
         private void txtPassword_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtPassword.Text))
-                epPassword1.SetError(txtPassword, Properties.Resources.ObavezanUnosPolja);
+                epPassword1.SetError(txtPassword, Properties.Resources.ObavezanUnosPolja + " Minimalno 4 karaktera!");
             else
                 epPassword1.Clear();
         }
@@ -139,7 +158,7 @@ namespace NextGame.WindowsUI.Korisnik
         private void txtPassword2_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtPassword2.Text))
-                epPassword2.SetError(txtPassword2, Properties.Resources.ObavezanUnosPolja);
+                epPassword2.SetError(txtPassword2, Properties.Resources.ObavezanUnosPolja + " Minimalno 4 karaktera!");
             else if(!txtPassword.Text.Equals(txtPassword2.Text))
                 epPassword2.SetError(txtPassword2,"Passwordi nisu isti!");
             else
@@ -149,7 +168,7 @@ namespace NextGame.WindowsUI.Korisnik
         private void txtOpis_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtOpis.Text))
-                epOpis.SetError(txtOpis, Properties.Resources.ObavezanUnosPolja);
+                epOpis.SetError(txtOpis, Properties.Resources.ObavezanUnosPolja + " Minimalno 10 karaktera!");
             else
                 epOpis.Clear();
         }

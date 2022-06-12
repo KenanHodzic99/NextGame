@@ -13,5 +13,10 @@ namespace NextGame.Models
         public Kontakt Kontakt { get; set; }
         public Adresa Adresa { get; set; }
         public virtual ICollection<KorisniciUloge> Uloge { get; set; }
+
+        public override string ToString()
+        {
+            return Username;
+        }
     }
 }

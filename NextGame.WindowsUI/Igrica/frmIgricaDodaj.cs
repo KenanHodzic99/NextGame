@@ -21,6 +21,7 @@ namespace NextGame.WindowsUI.Igrica
         private APIService _izdavackaKuceService = new APIService("IzdavackaKuca");
         private APIService _tipService = new APIService("Tip");
         private APIService _zanrService = new APIService("Zanr");
+        private APIService _platformaService = new APIService("Platforma");
 
         public Models.Igrica _entity;
         public bool isUcitana = false;
@@ -41,9 +42,22 @@ namespace NextGame.WindowsUI.Igrica
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
+            if(string.IsNullOrWhiteSpace(txtNaziv.Text) || nudCijena.Value < 0 || string.IsNullOrWhiteSpace(txtOpis.Text) || txtNaziv.Text.Length < 2 || txtOpis.Text.Length < 10)
+            {
+                if(MessageBox.Show("Molimo provjerite da li ste korektno unijeli sve podatke!", "Igrica") == DialogResult.OK)
+                {
+                    this.Validate();
+                    return;
+                }
+                else
+                {
+                    this.Validate();
+                    return;
+                }
+            }
+
             if (_entity != null)
             {
-             
                 IgricaUpdateRequest request = new IgricaUpdateRequest()
                 {
                     SystemRequirements = SysReq,
@@ -53,8 +67,20 @@ namespace NextGame.WindowsUI.Igrica
                     Naziv = txtNaziv.Text,
                     Opis = txtOpis.Text,
                     Tip = cbTip.SelectedItem as Tip,
-                    Zanrovi = (List<Zanr>)clbZanr.CheckedItems.Cast<Models.Zanr>()
+                    ZanroviId = new List<int>(),
+                    PlatformeId = new List<int>()
                 };
+
+                foreach(var selection in clbZanr.CheckedItems) 
+                {
+                    request.ZanroviId.Add(((Zanr)selection).Id);
+                }
+
+                foreach (var selection in clbPlatforme.CheckedItems)
+                {
+                    request.PlatformeId.Add(((Platforma)selection).Id);
+                }
+
                 if (isUcitana)
                 {
                     request.Slika = System.IO.File.ReadAllBytes(pbIgra.ImageLocation);
@@ -92,9 +118,21 @@ namespace NextGame.WindowsUI.Igrica
                             IzdavackaKucaId = int.Parse(cbIzdavackaKuca.SelectedValue.ToString()),
                             Naziv = txtNaziv.Text,
                             Opis = txtOpis.Text,
-                    Tip = cbTip.SelectedItem as Tip,
-                    Zanrovi = (List<Zanr>)clbZanr.CheckedItems.Cast<Models.Zanr>()
+                            Tip = cbTip.SelectedItem as Tip,
+                            ZanroviId = new List<int>(),
+                            PlatformeId = new List<int>()
                         };
+
+                        foreach (var selection in clbZanr.CheckedItems)
+                        {
+                            request.ZanroviId.Add(((Zanr)selection).Id);
+                        }
+
+                        foreach (var selection in clbPlatforme.CheckedItems)
+                        {
+                            request.PlatformeId.Add(((Platforma)selection).Id);
+                        }
+
                         request.Slika = System.IO.File.ReadAllBytes(pbIgra.ImageLocation);
                         MessageBox.Show("Uspjesno ste dodali igricu", "Igrica");
                         var result = await _service.Insert<Models.Igrica>(request);
@@ -120,6 +158,11 @@ namespace NextGame.WindowsUI.Igrica
 
             clbZanr.DataSource = await _zanrService.GetAll<List<Zanr>>(null);
             clbZanr.DisplayMember = "Naziv";
+            clbZanr.ValueMember = "Id";
+
+            clbPlatforme.DataSource = await _platformaService.GetAll<List<Platforma>>(null);
+            clbPlatforme.DisplayMember = "Naziv";
+            clbPlatforme.ValueMember = "Id";
 
             if (_entity != null) 
             {
@@ -134,10 +177,14 @@ namespace NextGame.WindowsUI.Igrica
                 cbIzdavackaKuca.SelectedValue = _entity.IzdavackaKuca.Id;
                 txtNaziv.Text = _entity.Naziv;
                 txtOpis.Text = _entity.Opis;
-                cbTip.SelectedIndex = _entity.Tip.Id;
-                foreach(Zanr zanr in _entity.Zanrovi)
+                cbTip.SelectedIndex = _entity.Tip.Id - 1;
+                foreach(IgricaZanr zanr in _entity.Zanrovi)
                 {
-                    clbZanr.SetItemChecked(zanr.Id, true);
+                    clbZanr.SetItemChecked(zanr.ZanrId - 1, true);
+                }
+                foreach(IgricaPlatforma platforma in _entity.Platforme)
+                {
+                    clbPlatforme.SetItemChecked(platforma.PlatformaId - 1, true);
                 }
             }
 
@@ -151,9 +198,9 @@ namespace NextGame.WindowsUI.Igrica
 
         private void txtNaziv_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNaziv.Text))
+            if (string.IsNullOrWhiteSpace(txtNaziv.Text) || txtNaziv.Text.Length < 2)
             {
-                epNaziv.SetError(txtNaziv, Properties.Resources.ObavezanUnosPolja);
+                epNaziv.SetError(txtNaziv, Properties.Resources.ObavezanUnosPolja + " Minimalno 2 karaktera.");
             }
             else
             {
@@ -161,26 +208,11 @@ namespace NextGame.WindowsUI.Igrica
             }
         }
 
-        //private void txtTip_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (string.IsNullOrWhiteSpace(txtTip.Text))
-        //        epTip.SetError(txtTip, Properties.Resources.ObavezanUnosPolja);
-        //    else
-        //        epTip.Clear();
-        //}
-
         private void dtpDatumIzdavanja_Validating(object sender, CancelEventArgs e)
         {
             
         }
 
-        //private void txtZanr_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (string.IsNullOrWhiteSpace(txtZanr.Text))
-        //        epZanr.SetError(txtZanr, Properties.Resources.ObavezanUnosPolja);
-        //    else
-        //        epZanr.Clear();
-        //}
 
         private void nudCijena_Validating(object sender, CancelEventArgs e)
         {
@@ -192,8 +224,8 @@ namespace NextGame.WindowsUI.Igrica
 
         private void txtOpis_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtOpis.Text))
-                epOpis.SetError(txtOpis, Properties.Resources.ObavezanUnosPolja);
+            if (string.IsNullOrWhiteSpace(txtOpis.Text) || txtOpis.Text.Length < 10)
+                epOpis.SetError(txtOpis, Properties.Resources.ObavezanUnosPolja + " Minimalno 10 karaktera.");
             else
                 epOpis.Clear();
         }

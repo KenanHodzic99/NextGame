@@ -87,7 +87,7 @@ namespace NextGame.WindowsUI.Korisnik
             // 
             // btnPretrazi
             // 
-            this.btnPretrazi.Location = new System.Drawing.Point(509, 58);
+            this.btnPretrazi.Location = new System.Drawing.Point(512, 58);
             this.btnPretrazi.Name = "btnPretrazi";
             this.btnPretrazi.Size = new System.Drawing.Size(126, 20);
             this.btnPretrazi.TabIndex = 4;
@@ -98,7 +98,7 @@ namespace NextGame.WindowsUI.Korisnik
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 40);
+            this.label1.Location = new System.Drawing.Point(-3, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 1;
@@ -106,7 +106,7 @@ namespace NextGame.WindowsUI.Korisnik
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(3, 58);
+            this.txtUsername.Location = new System.Drawing.Point(0, 58);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(199, 20);
             this.txtUsername.TabIndex = 0;

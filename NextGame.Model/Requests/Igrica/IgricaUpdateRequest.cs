@@ -15,8 +15,8 @@ namespace NextGame.Model.Requests.Igrica
         public int IzdavackaKucaId { get; set; }
         public Tip Tip{ get; set; }
         public float Cijena { get; set; }
-        public List<Zanr> Zanrovi { get; set; }
-        public List<Platforma> Platforme { get; set; }
+        public List<int> ZanroviId { get; set; } = new List<int>();
+        public List<int> PlatformeId { get; set; } = new List<int>();
 
     }
 }

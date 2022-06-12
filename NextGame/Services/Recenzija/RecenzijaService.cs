@@ -17,7 +17,7 @@ namespace NextGame.Services
 
         public override IEnumerable<Model.Recenzija> GetAll(RecenzijaSearchRequest search = null)
         {
-            var entity = _dbContext.Recenzije.Include(x=>x.Igrica).Include(x=>x.Korisnik);
+            var entity = _dbContext.Recenzije.Include(x=>x.Igrica).Include(x=>x.Korisnik).Include(x=>x.Korisnik.Kontakt);
 
             if (search != null)
             {

@@ -27,5 +27,14 @@ namespace NextGame.Database
         public DbSet<Zanr> Zanrovi { get; set; }
         public DbSet<Tip> Tipovi { get; set; }
         public DbSet<Platforma> Platforme { get; set; }
+        public DbSet<IgricaZanr> IgriceZanrovi { get; set; }
+        public DbSet<IgricaPlatforma> IgricePlatforme { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<IgricaZanr>().HasKey(nameof(IgricaZanr.IgricaId), nameof(IgricaZanr.ZanrId));
+            modelBuilder.Entity<IgricaPlatforma>().HasKey(nameof(IgricaPlatforma.IgricaId), nameof(IgricaPlatforma.PlatformaId));
+        }
     }
 }

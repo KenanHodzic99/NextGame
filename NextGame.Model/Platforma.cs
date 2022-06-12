@@ -8,5 +8,6 @@ namespace NextGame.Model
     {
         public int Id { get; set; }
         public string Naziv { get; set; }
+        public List<Igrica> Igrice { get; set; }
     }
 }

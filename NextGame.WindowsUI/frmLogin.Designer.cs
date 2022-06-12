@@ -132,6 +132,7 @@ namespace NextGame.WindowsUI
             this.ClientSize = new System.Drawing.Size(330, 405);
             this.Controls.Add(this.panel1);
             this.Name = "frmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.panel1.ResumeLayout(false);

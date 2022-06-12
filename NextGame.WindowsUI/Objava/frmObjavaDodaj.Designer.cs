@@ -53,17 +53,17 @@ namespace NextGame.WindowsUI.Objava
             // lblIzdavackaKuca
             // 
             this.lblIzdavackaKuca.AutoSize = true;
-            this.lblIzdavackaKuca.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblIzdavackaKuca.Location = new System.Drawing.Point(12, 9);
+            this.lblIzdavackaKuca.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 18F);
+            this.lblIzdavackaKuca.Location = new System.Drawing.Point(10, 8);
             this.lblIzdavackaKuca.Name = "lblIzdavackaKuca";
-            this.lblIzdavackaKuca.Size = new System.Drawing.Size(97, 32);
+            this.lblIzdavackaKuca.Size = new System.Drawing.Size(98, 32);
             this.lblIzdavackaKuca.TabIndex = 3;
             this.lblIzdavackaKuca.Text = "OBJAVA";
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.cbIgrica);
             this.panel1.Controls.Add(this.btnSave);
@@ -74,24 +74,24 @@ namespace NextGame.WindowsUI.Objava
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtNaslov);
-            this.panel1.Location = new System.Drawing.Point(12, 44);
+            this.panel1.Location = new System.Drawing.Point(10, 38);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(746, 540);
+            this.panel1.Size = new System.Drawing.Size(639, 468);
             this.panel1.TabIndex = 2;
             // 
             // cbIgrica
             // 
             this.cbIgrica.FormattingEnabled = true;
-            this.cbIgrica.Location = new System.Drawing.Point(534, 29);
+            this.cbIgrica.Location = new System.Drawing.Point(452, 25);
             this.cbIgrica.Name = "cbIgrica";
-            this.cbIgrica.Size = new System.Drawing.Size(200, 23);
+            this.cbIgrica.Size = new System.Drawing.Size(172, 21);
             this.cbIgrica.TabIndex = 20;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(607, 500);
+            this.btnSave.Location = new System.Drawing.Point(520, 433);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(121, 23);
+            this.btnSave.Size = new System.Drawing.Size(104, 20);
             this.btnSave.TabIndex = 19;
             this.btnSave.Text = "Sačuvaj";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -100,17 +100,17 @@ namespace NextGame.WindowsUI.Objava
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 95);
+            this.label7.Location = new System.Drawing.Point(5, 82);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 15);
+            this.label7.Size = new System.Drawing.Size(45, 13);
             this.label7.TabIndex = 17;
             this.label7.Text = "Sadrzaj:";
             // 
             // txtOpis
             // 
-            this.txtOpis.Location = new System.Drawing.Point(6, 113);
+            this.txtOpis.Location = new System.Drawing.Point(5, 98);
             this.txtOpis.Name = "txtOpis";
-            this.txtOpis.Size = new System.Drawing.Size(722, 365);
+            this.txtOpis.Size = new System.Drawing.Size(619, 317);
             this.txtOpis.TabIndex = 16;
             this.txtOpis.Text = "";
             this.txtOpis.Validating += new System.ComponentModel.CancelEventHandler(this.txtOpis_Validating);
@@ -118,43 +118,43 @@ namespace NextGame.WindowsUI.Objava
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(267, 12);
+            this.label5.Location = new System.Drawing.Point(229, 10);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 15);
+            this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = "Autor:";
             // 
             // txtAutor
             // 
-            this.txtAutor.Location = new System.Drawing.Point(267, 28);
+            this.txtAutor.Location = new System.Drawing.Point(232, 25);
             this.txtAutor.Name = "txtAutor";
-            this.txtAutor.Size = new System.Drawing.Size(206, 23);
+            this.txtAutor.Size = new System.Drawing.Size(177, 20);
             this.txtAutor.TabIndex = 10;
             this.txtAutor.Validating += new System.ComponentModel.CancelEventHandler(this.txtAutor_Validating);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(534, 12);
+            this.label3.Location = new System.Drawing.Point(449, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 15);
+            this.label3.Size = new System.Drawing.Size(36, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Igrica:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 12);
+            this.label1.Location = new System.Drawing.Point(2, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 15);
+            this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Naslov:";
             // 
             // txtNaslov
             // 
-            this.txtNaslov.Location = new System.Drawing.Point(6, 29);
+            this.txtNaslov.Location = new System.Drawing.Point(5, 25);
             this.txtNaslov.Name = "txtNaslov";
-            this.txtNaslov.Size = new System.Drawing.Size(206, 23);
+            this.txtNaslov.Size = new System.Drawing.Size(177, 20);
             this.txtNaslov.TabIndex = 2;
             this.txtNaslov.Validating += new System.ComponentModel.CancelEventHandler(this.txtNaslov_Validating);
             // 
@@ -172,9 +172,9 @@ namespace NextGame.WindowsUI.Objava
             // 
             // frmObjavaDodaj
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(770, 596);
+            this.ClientSize = new System.Drawing.Size(660, 517);
             this.Controls.Add(this.lblIzdavackaKuca);
             this.Controls.Add(this.panel1);
             this.Name = "frmObjavaDodaj";

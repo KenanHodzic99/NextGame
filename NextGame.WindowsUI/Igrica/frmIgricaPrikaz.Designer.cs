@@ -91,7 +91,7 @@ namespace NextGame.WindowsUI.Igrica
             // 
             // btnPretrazi
             // 
-            this.btnPretrazi.Location = new System.Drawing.Point(509, 58);
+            this.btnPretrazi.Location = new System.Drawing.Point(512, 58);
             this.btnPretrazi.Name = "btnPretrazi";
             this.btnPretrazi.Size = new System.Drawing.Size(126, 20);
             this.btnPretrazi.TabIndex = 4;
@@ -102,7 +102,7 @@ namespace NextGame.WindowsUI.Igrica
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(271, 40);
+            this.label2.Location = new System.Drawing.Point(267, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 3;
@@ -118,7 +118,7 @@ namespace NextGame.WindowsUI.Igrica
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 40);
+            this.label1.Location = new System.Drawing.Point(-3, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 1;
@@ -126,7 +126,7 @@ namespace NextGame.WindowsUI.Igrica
             // 
             // txtNaziv
             // 
-            this.txtNaziv.Location = new System.Drawing.Point(3, 58);
+            this.txtNaziv.Location = new System.Drawing.Point(0, 58);
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(199, 20);
             this.txtNaziv.TabIndex = 0;

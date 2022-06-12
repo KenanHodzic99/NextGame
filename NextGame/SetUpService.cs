@@ -44,6 +44,11 @@ namespace NextGame
 
 
 
+            
+            context.Entry<Uloga>(uloga1).State = EntityState.Added;
+            context.Entry<Uloga>(uloga2).State = EntityState.Added;
+
+            context.SaveChanges();
 
             var korisnik1 = new Korisnik()
             {
@@ -54,8 +59,6 @@ namespace NextGame
                 Username = "user1",
                 DatumRođenja = DateTime.Now
             };
-
-
             var korisnik2 = new Korisnik()
             {
 
@@ -65,8 +68,6 @@ namespace NextGame
                 Username = "user5",
                 DatumRođenja = DateTime.Now
             };
-
-
             var korisnik3 = new Korisnik()
             {
 
@@ -77,6 +78,13 @@ namespace NextGame
                 DatumRođenja = DateTime.Now
             };
 
+            context.Korisnici.Add(korisnik1);
+            context.Korisnici.Add(korisnik2);
+            context.Korisnici.Add(korisnik3);
+
+            context.Entry<Korisnik>(korisnik1).State = EntityState.Added;
+            context.Entry<Korisnik>(korisnik2).State = EntityState.Added;
+            context.Entry<Korisnik>(korisnik3).State = EntityState.Added;
 
             var korisnik4 = new Korisnik()
             {
@@ -87,7 +95,6 @@ namespace NextGame
                 Username = "user3",
                 DatumRođenja = DateTime.Now
             };
-
             var korisnik5 = new Korisnik()
             {
 
@@ -98,23 +105,12 @@ namespace NextGame
                 DatumRođenja = DateTime.Now
             };
 
-            context.Korisnici.Add(korisnik1);
-
-            context.Korisnici.Add(korisnik2);
-
-            context.Korisnici.Add(korisnik3);
-
             context.Korisnici.Add(korisnik4);
-
             context.Korisnici.Add(korisnik5);
 
-            context.Entry<Uloga>(uloga1).State = EntityState.Detached;
-            context.Entry<Uloga>(uloga2).State = EntityState.Detached;
-            context.Entry<Korisnik>(korisnik1).State = EntityState.Detached;
-            context.Entry<Korisnik>(korisnik2).State = EntityState.Detached;
-            context.Entry<Korisnik>(korisnik3).State = EntityState.Detached;
-            context.Entry<Korisnik>(korisnik4).State = EntityState.Detached;
-            context.Entry<Korisnik>(korisnik5).State = EntityState.Detached;
+            context.Entry<Korisnik>(korisnik4).State = EntityState.Added;
+            context.Entry<Korisnik>(korisnik5).State = EntityState.Added;
+            
             context.SaveChanges();
 
             var ku1 = new KorisniciUloge()
@@ -125,7 +121,6 @@ namespace NextGame
                 UlogaId = 2,
                 KorisnikId = 1
             };
-
             var ku2 = new KorisniciUloge()
             {
 
@@ -134,7 +129,6 @@ namespace NextGame
                 UlogaId = 1,
                 KorisnikId = 2
             };
-
             var ku3 = new KorisniciUloge()
             {
 
@@ -144,6 +138,16 @@ namespace NextGame
                 KorisnikId = 3
             };
 
+            context.KorisniciUloge.Add(ku1);
+            context.KorisniciUloge.Add(ku2);
+            context.KorisniciUloge.Add(ku3);
+
+            context.Entry<KorisniciUloge>(ku1).State = EntityState.Added;
+            context.Entry<KorisniciUloge>(ku2).State = EntityState.Added;
+            context.Entry<KorisniciUloge>(ku3).State = EntityState.Added;
+
+            context.SaveChanges();
+
             var ku4 = new KorisniciUloge()
             {
 
@@ -152,7 +156,6 @@ namespace NextGame
                 UlogaId = 2,
                 KorisnikId = 4
             };
-
             var ku5 = new KorisniciUloge()
             {
 
@@ -162,16 +165,13 @@ namespace NextGame
                 KorisnikId = 5
             };
 
-            context.KorisniciUloge.Add(ku1);
-
-            context.KorisniciUloge.Add(ku2);
-
-            context.KorisniciUloge.Add(ku3);
-
             context.KorisniciUloge.Add(ku4);
-
             context.KorisniciUloge.Add(ku5);
 
+            context.Entry<KorisniciUloge>(ku4).State = EntityState.Added;
+            context.Entry<KorisniciUloge>(ku5).State = EntityState.Added;
+
+            context.SaveChanges();
 
             var ik1 = new IzdavackaKuca()
             {
@@ -185,7 +185,6 @@ namespace NextGame
                 Slika = SlikaCDProject,
                 Opis = "CD Projekt S.A. is a Polish video game developer, publisher and distributor based in Warsaw, founded in May 1994 by Marcin Iwiński and Michał Kiciński. Iwiński and Kiciński were video game retailers before they founded the company, which initially acted as a distributor of foreign video games for the domestic market."
             };
-
             var ik2 = new IzdavackaKuca()
             {
 
@@ -200,9 +199,12 @@ namespace NextGame
             };
 
             context.IzdavackeKuce.Add(ik1);
-
             context.IzdavackeKuce.Add(ik2);
 
+            context.Entry<IzdavackaKuca>(ik1).State = EntityState.Added;
+            context.Entry<IzdavackaKuca>(ik2).State = EntityState.Added;
+
+            context.SaveChanges();
 
             var sys1 = new SystemRequirements()
             {
@@ -216,108 +218,127 @@ namespace NextGame
 
             context.SystemRequirements.Add(sys1);
 
+            context.Entry<SystemRequirements>(sys1).State = EntityState.Added;
+
+            context.SaveChanges();
+
             var znr1 = new Zanr()
             {
-                Id = 1,
                 Naziv = "Battle Royale"
             };
-
             var znr2 = new Zanr()
             {
-                Id = 2,
                 Naziv = "Action"
             };
-
             var znr3 = new Zanr()
             {
-                Id = 3,
                 Naziv = "Adventure"
-            };
-
-            var znr4 = new Zanr()
-            {
-                Id = 4,
-                Naziv = "Strategy and Tactic"
-            };
-
-            var znr5 = new Zanr()
-            {
-                Id = 5,
-                Naziv = "Horror"
-            };
-
-            var znr6 = new Zanr()
-            {
-                Id = 6,
-                Naziv = "Sports"
             };
 
             context.Zanrovi.Add(znr1);
             context.Zanrovi.Add(znr2);
             context.Zanrovi.Add(znr3);
+
+            context.Entry<Zanr>(znr1).State = EntityState.Added;
+            context.Entry<Zanr>(znr2).State = EntityState.Added;
+            context.Entry<Zanr>(znr3).State = EntityState.Added;
+
+            context.SaveChanges();
+
+            var znr4 = new Zanr()
+            {
+                Naziv = "Strategy and Tactic"
+            };
+            var znr5 = new Zanr()
+            {
+                Naziv = "Horror"
+            };
+            var znr6 = new Zanr()
+            {
+                Naziv = "Sports"
+            };
+
             context.Zanrovi.Add(znr4);
             context.Zanrovi.Add(znr5);
             context.Zanrovi.Add(znr6);
 
+            context.Entry<Zanr>(znr4).State = EntityState.Added;
+            context.Entry<Zanr>(znr5).State = EntityState.Added;
+            context.Entry<Zanr>(znr6).State = EntityState.Added;
+
+            context.SaveChanges();
+
             var tip1 = new Tip() 
             {
-                Id = 1,
                 Naziv = "Sandbox"
             };
-
             var tip2 = new Tip()
             {
-                Id = 2,
                 Naziv = "Real-time strategy (RTS)"
             };
-
             var tip3 = new Tip()
             {
-                Id = 3,
                 Naziv = "Shooters (FPS and TPS)"
-            };
-
-            var tip4 = new Tip()
-            {
-                Id = 4,
-                Naziv = "Multiplayer online battle arena (MOBA)"
-            };
-
-            var tip5 = new Tip()
-            {
-                Id = 5,
-                Naziv = "Role-playing (RPG, ARPG, and More)"
             };
 
             context.Tipovi.Add(tip1);
             context.Tipovi.Add(tip2);
             context.Tipovi.Add(tip3);
+
+            context.Entry<Tip>(tip1).State = EntityState.Added;
+            context.Entry<Tip>(tip2).State = EntityState.Added;
+            context.Entry<Tip>(tip3).State = EntityState.Added;
+
+            context.SaveChanges();
+
+            var tip4 = new Tip()
+            {
+                Naziv = "Multiplayer online battle arena (MOBA)"
+            };
+            var tip5 = new Tip()
+            {
+                Naziv = "Role-playing (RPG, ARPG, and More)"
+            };
+
             context.Tipovi.Add(tip4);
             context.Tipovi.Add(tip5);
 
-            context.Entry<KorisniciUloge>(ku1).State = EntityState.Detached;
-            context.Entry<KorisniciUloge>(ku2).State = EntityState.Detached;
-            context.Entry<KorisniciUloge>(ku3).State = EntityState.Detached;
-            context.Entry<KorisniciUloge>(ku4).State = EntityState.Detached;
-            context.Entry<KorisniciUloge>(ku5).State = EntityState.Detached;
+            context.Entry<Tip>(tip4).State = EntityState.Added;
+            context.Entry<Tip>(tip5).State = EntityState.Added;
 
-            context.Entry<IzdavackaKuca>(ik1).State = EntityState.Detached;
-            context.Entry<IzdavackaKuca>(ik2).State = EntityState.Detached;
+            context.SaveChanges();
 
-            context.Entry<SystemRequirements>(sys1).State = EntityState.Detached;
+            var ptf1 = new Platforma() 
+            {
+                Naziv = "PC",
+            };
+            var ptf2 = new Platforma()
+            {
+                Naziv = "PlayStation",
+            };
+            var ptf3 = new Platforma()
+            {
+                Naziv = "XBox",
+            };
 
-            context.Entry<Zanr>(znr1).State = EntityState.Detached;
-            context.Entry<Zanr>(znr2).State = EntityState.Detached;
-            context.Entry<Zanr>(znr3).State = EntityState.Detached;
-            context.Entry<Zanr>(znr4).State = EntityState.Detached;
-            context.Entry<Zanr>(znr5).State = EntityState.Detached;
-            context.Entry<Zanr>(znr6).State = EntityState.Detached;
+            context.Platforme.Add(ptf1);
+            context.Platforme.Add(ptf2);
+            context.Platforme.Add(ptf3);
 
-            context.Entry<Tip>(tip1).State = EntityState.Detached;
-            context.Entry<Tip>(tip2).State = EntityState.Detached;
-            context.Entry<Tip>(tip3).State = EntityState.Detached;
-            context.Entry<Tip>(tip4).State = EntityState.Detached;
-            context.Entry<Tip>(tip5).State = EntityState.Detached;
+            context.Entry<Platforma>(ptf1).State = EntityState.Added;
+            context.Entry<Platforma>(ptf2).State = EntityState.Added;
+            context.Entry<Platforma>(ptf3).State = EntityState.Added;
+
+            context.SaveChanges();
+
+            var ptf4 = new Platforma()
+            {
+                Naziv = "Nintendo",
+            };
+
+            context.Platforme.Add(ptf4);
+           
+            context.Entry<Platforma>(ptf4).State = EntityState.Added;
 
             context.SaveChanges();
 
@@ -335,9 +356,9 @@ namespace NextGame
                 IzdavackaKucaId = 2,
                 Tip = tip3,
                 Cijena = 60,
-                Zanrovi = new List<Zanr>() { znr2, znr4 },
+                Zanrovi = new List<IgricaZanr>(),
+                Platforme = new List<IgricaPlatforma>()
             };
-
             var igrica2 = new Igrica()
             {
 
@@ -352,9 +373,9 @@ namespace NextGame
                 IzdavackaKucaId = 2,
                 Tip = tip2,
                 Cijena = 60,
-                Zanrovi = new List<Zanr>() { znr3, znr4 },
+                Zanrovi = new List<IgricaZanr>(),
+                Platforme = new List<IgricaPlatforma>()
             };
-
             var igrica3 = new Igrica()
             {
 
@@ -367,10 +388,21 @@ namespace NextGame
                 DatumIzdavanja = DateTime.Now,
                 IzdavackaKuca = ik2,
                 IzdavackaKucaId = 2,
-                Tip = tip3,
+                Tip = tip1,
                 Cijena = 60,
-                Zanrovi = new List<Zanr>() { znr2, znr4 },
+                Zanrovi = new List<IgricaZanr>(),
+                Platforme = new List<IgricaPlatforma>()
             };
+
+            context.Igrice.Add(igrica1);
+            context.Igrice.Add(igrica2);
+            context.Igrice.Add(igrica3);
+
+            context.Entry<Igrica>(igrica1).State = EntityState.Added;
+            context.Entry<Igrica>(igrica2).State = EntityState.Added;
+            context.Entry<Igrica>(igrica3).State = EntityState.Added;
+
+            context.SaveChanges();
 
             var igrica4 = new Igrica()
             {
@@ -386,9 +418,9 @@ namespace NextGame
                 IzdavackaKucaId = 2,
                 Tip = tip4,
                 Cijena = 60,
-                Zanrovi = new List<Zanr>() { znr2, znr3, znr4 },
+                Zanrovi = new List<IgricaZanr>(),
+                Platforme = new List<IgricaPlatforma>()
             };
-
             var igrica5 = new Igrica()
             {
 
@@ -401,11 +433,11 @@ namespace NextGame
                 DatumIzdavanja = DateTime.Now,
                 IzdavackaKuca = ik1,
                 IzdavackaKucaId = 1,
-                Tip = tip3,
+                Tip = tip5,
                 Cijena = 60,
-                Zanrovi = new List<Zanr>() { znr2, znr4 },
+                Zanrovi = new List<IgricaZanr>(),
+                Platforme = new List<IgricaPlatforma>()
             };
-
             var igrica6 = new Igrica()
             {
 
@@ -420,8 +452,19 @@ namespace NextGame
                 IzdavackaKucaId = 1,
                 Tip = tip3,
                 Cijena = 60,
-                Zanrovi = new List<Zanr>() { znr2, znr3 },
+                Zanrovi = new List<IgricaZanr>(),
+                Platforme = new List<IgricaPlatforma>()
             };
+
+            context.Igrice.Add(igrica4);
+            context.Igrice.Add(igrica5);
+            context.Igrice.Add(igrica6);
+
+            context.Entry<Igrica>(igrica4).State = EntityState.Added;
+            context.Entry<Igrica>(igrica5).State = EntityState.Added;
+            context.Entry<Igrica>(igrica6).State = EntityState.Added;
+
+            context.SaveChanges();
 
             var igrica7 = new Igrica()
             {
@@ -437,9 +480,9 @@ namespace NextGame
                 IzdavackaKucaId = 1,
                 Tip = tip3,
                 Cijena = 60,
-                Zanrovi = new List<Zanr>() { znr2, znr3 },
+                Zanrovi = new List<IgricaZanr>(),
+                Platforme = new List<IgricaPlatforma>()
             };
-
             var igrica8 = new Igrica()
             {
 
@@ -454,34 +497,271 @@ namespace NextGame
                 IzdavackaKucaId = 1,
                 Tip = tip3,
                 Cijena = 60,
-                Zanrovi = new List<Zanr>() { znr2, znr3, znr4 },
+                Zanrovi = new List<IgricaZanr>(),
+                Platforme = new List<IgricaPlatforma>()
             };
 
-            context.Igrice.Add(igrica1);
-
-            context.Igrice.Add(igrica2);
-
-            context.Igrice.Add(igrica3);
-
-            context.Igrice.Add(igrica4);
-
-            context.Igrice.Add(igrica5);
-
-            context.Igrice.Add(igrica6);
-
             context.Igrice.Add(igrica7);
-
             context.Igrice.Add(igrica8);
 
+            context.Entry<Igrica>(igrica7).State = EntityState.Added;
+            context.Entry<Igrica>(igrica8).State = EntityState.Added;
 
-            context.Entry<Igrica>(igrica1).State = EntityState.Detached;
-            context.Entry<Igrica>(igrica2).State = EntityState.Detached;
-            context.Entry<Igrica>(igrica3).State = EntityState.Detached;
-            context.Entry<Igrica>(igrica4).State = EntityState.Detached;
-            context.Entry<Igrica>(igrica5).State = EntityState.Detached;
-            context.Entry<Igrica>(igrica6).State = EntityState.Detached;
-            context.Entry<Igrica>(igrica7).State = EntityState.Detached;
-            context.Entry<Igrica>(igrica8).State = EntityState.Detached;
+            context.SaveChanges();
+
+            var igznr1 = new IgricaZanr()
+            {
+                IgricaId = 1,
+                ZanrId = 1
+            };
+            var igznr2 = new IgricaZanr()
+            {
+                IgricaId = 2,
+                ZanrId = 1
+            };
+            var igznr3 = new IgricaZanr()
+            {
+                IgricaId = 3,
+                ZanrId = 1
+            };
+
+            context.IgriceZanrovi.Add(igznr1);
+            context.IgriceZanrovi.Add(igznr2);
+            context.IgriceZanrovi.Add(igznr3);
+
+            context.Entry<IgricaZanr>(igznr1).State = EntityState.Added;
+            context.Entry<IgricaZanr>(igznr2).State = EntityState.Added;
+            context.Entry<IgricaZanr>(igznr3).State = EntityState.Added;
+
+            context.SaveChanges();
+
+            var igznr4 = new IgricaZanr()
+            {
+                IgricaId = 4,
+                ZanrId = 1
+            };
+            var igznr5 = new IgricaZanr()
+            {
+                IgricaId = 1,
+                ZanrId = 2
+            };
+            var igznr6 = new IgricaZanr()
+            {
+                IgricaId = 3,
+                ZanrId = 2
+            };
+
+            context.IgriceZanrovi.Add(igznr4);
+            context.IgriceZanrovi.Add(igznr5);
+            context.IgriceZanrovi.Add(igznr6);
+
+            context.Entry<IgricaZanr>(igznr4).State = EntityState.Added;
+            context.Entry<IgricaZanr>(igznr5).State = EntityState.Added;
+            context.Entry<IgricaZanr>(igznr6).State = EntityState.Added;
+
+            context.SaveChanges();
+
+            var igznr7 = new IgricaZanr()
+            {
+                IgricaId = 2,
+                ZanrId = 4
+            };
+            var igznr8 = new IgricaZanr()
+            {
+                IgricaId = 3,
+                ZanrId = 4
+            };
+            var igznr9 = new IgricaZanr()
+            {
+                IgricaId = 4,
+                ZanrId = 4
+            };
+
+            context.IgriceZanrovi.Add(igznr7);
+            context.IgriceZanrovi.Add(igznr8);
+            context.IgriceZanrovi.Add(igznr9);
+
+            context.Entry<IgricaZanr>(igznr7).State = EntityState.Added;
+            context.Entry<IgricaZanr>(igznr8).State = EntityState.Added;
+            context.Entry<IgricaZanr>(igznr9).State = EntityState.Added;
+
+            context.SaveChanges();
+
+            var igptf1 = new IgricaPlatforma()
+            {
+                IgricaId = 1,
+                PlatformaId = 1
+            };
+            var igptf2 = new IgricaPlatforma()
+            {
+                IgricaId = 2,
+                PlatformaId = 1
+            };
+            var igptf3 = new IgricaPlatforma()
+            {
+                IgricaId = 3,
+                PlatformaId = 1
+            };
+
+            context.IgricePlatforme.Add(igptf1);
+            context.IgricePlatforme.Add(igptf2);
+            context.IgricePlatforme.Add(igptf3);
+
+            context.Entry<IgricaPlatforma>(igptf1).State = EntityState.Added;
+            context.Entry<IgricaPlatforma>(igptf2).State = EntityState.Added;
+            context.Entry<IgricaPlatforma>(igptf3).State = EntityState.Added;
+
+            context.SaveChanges();
+
+            var igptf4 = new IgricaPlatforma()
+            {
+                IgricaId = 4,
+                PlatformaId = 1
+            };
+            var igptf5 = new IgricaPlatforma()
+            {
+                IgricaId = 1,
+                PlatformaId = 2
+            };
+            var igptf6 = new IgricaPlatforma()
+            {
+                IgricaId = 2,
+                PlatformaId = 2
+            };
+
+            context.IgricePlatforme.Add(igptf4);
+            context.IgricePlatforme.Add(igptf5);
+            context.IgricePlatforme.Add(igptf6);
+
+            context.Entry<IgricaPlatforma>(igptf4).State = EntityState.Added;
+            context.Entry<IgricaPlatforma>(igptf5).State = EntityState.Added;
+            context.Entry<IgricaPlatforma>(igptf6).State = EntityState.Added;
+
+            context.SaveChanges();
+
+            var igptf7 = new IgricaPlatforma()
+            {
+                IgricaId = 3,
+                PlatformaId = 2
+            };
+            var igptf8 = new IgricaPlatforma()
+            {
+                IgricaId = 4,
+                PlatformaId = 2
+            };
+            var igptf9 = new IgricaPlatforma()
+            {
+                IgricaId = 1,
+                PlatformaId = 3
+            };
+
+            context.IgricePlatforme.Add(igptf7);
+            context.IgricePlatforme.Add(igptf8);
+            context.IgricePlatforme.Add(igptf9);
+
+            context.Entry<IgricaPlatforma>(igptf7).State = EntityState.Added;
+            context.Entry<IgricaPlatforma>(igptf8).State = EntityState.Added;
+            context.Entry<IgricaPlatforma>(igptf9).State = EntityState.Added;
+
+            context.SaveChanges();
+
+            var igptf10 = new IgricaPlatforma()
+            {
+                IgricaId = 2,
+                PlatformaId = 3
+            };
+            var igptf11 = new IgricaPlatforma()
+            {
+                IgricaId = 3,
+                PlatformaId = 3
+            };
+            var igptf12 = new IgricaPlatforma()
+            {
+                IgricaId = 4,
+                PlatformaId = 3
+            };
+
+            context.IgricePlatforme.Add(igptf10);
+            context.IgricePlatforme.Add(igptf11);
+            context.IgricePlatforme.Add(igptf12);
+
+            context.Entry<IgricaPlatforma>(igptf10).State = EntityState.Added;
+            context.Entry<IgricaPlatforma>(igptf11).State = EntityState.Added;
+            context.Entry<IgricaPlatforma>(igptf12).State = EntityState.Added;
+
+            context.SaveChanges();
+
+            var igptf13 = new IgricaPlatforma()
+            {
+                IgricaId = 1,
+                PlatformaId = 4
+            };
+            var igptf14 = new IgricaPlatforma()
+            {
+                IgricaId = 2,
+                PlatformaId = 4
+            };
+            var igptf15 = new IgricaPlatforma()
+            {
+                IgricaId = 3,
+                PlatformaId = 4
+            };
+
+            context.IgricePlatforme.Add(igptf13);
+            context.IgricePlatforme.Add(igptf14);
+            context.IgricePlatforme.Add(igptf15);
+
+            context.Entry<IgricaPlatforma>(igptf13).State = EntityState.Added;
+            context.Entry<IgricaPlatforma>(igptf14).State = EntityState.Added;
+            context.Entry<IgricaPlatforma>(igptf15).State = EntityState.Added;
+
+            context.SaveChanges();
+
+            var igptf16 = new IgricaPlatforma()
+            {
+                IgricaId = 4,
+                PlatformaId = 4
+            };
+
+            context.IgricePlatforme.Add(igptf16);
+
+            context.Entry<IgricaPlatforma>(igptf16).State = EntityState.Added;
+
+            context.SaveChanges();
+
+            var igrica1db = context.Igrice.Where(x=> x.Id == 1).SingleOrDefault();
+            var igrica2db = context.Igrice.Where(x => x.Id == 2).SingleOrDefault();
+            var igrica3db = context.Igrice.Where(x => x.Id == 3).SingleOrDefault();
+            var igrica4db = context.Igrice.Where(x => x.Id == 4).SingleOrDefault();
+
+            igrica1db.Zanrovi.Add(igznr1);
+            igrica1db.Zanrovi.Add(igznr5);
+            igrica1db.Platforme.Add(igptf1);
+            igrica1db.Platforme.Add(igptf5);
+            igrica1db.Platforme.Add(igptf9);
+            igrica1db.Platforme.Add(igptf13);
+
+            igrica2db.Zanrovi.Add(igznr2);
+            igrica2db.Zanrovi.Add(igznr7);
+            igrica2db.Platforme.Add(igptf2);
+            igrica2db.Platforme.Add(igptf6);
+            igrica2db.Platforme.Add(igptf10);
+            igrica2db.Platforme.Add(igptf14);
+
+            igrica3db.Zanrovi.Add(igznr3);
+            igrica3db.Zanrovi.Add(igznr6);
+            igrica3db.Zanrovi.Add(igznr8);
+            igrica3db.Platforme.Add(igptf3);
+            igrica3db.Platforme.Add(igptf7);
+            igrica3db.Platforme.Add(igptf11);
+            igrica3db.Platforme.Add(igptf15);
+
+            igrica4db.Zanrovi.Add(igznr4);
+            igrica4db.Zanrovi.Add(igznr9);
+            igrica4db.Platforme.Add(igptf4);
+            igrica4db.Platforme.Add(igptf8);
+            igrica4db.Platforme.Add(igptf12);
+            igrica4db.Platforme.Add(igptf16);
 
             context.SaveChanges();
 
@@ -498,7 +778,8 @@ namespace NextGame
 
             context.Objave.Add(objava1);
 
-            context.Entry<Objava>(objava1).State = EntityState.Detached;
+            context.Entry<Objava>(objava1).State = EntityState.Added;
+
             context.SaveChanges();
 
             var komentar1 = new Komentar()
@@ -514,6 +795,10 @@ namespace NextGame
 
             context.Komentari.Add(komentar1);
 
+            context.Entry<Komentar>(komentar1).State = EntityState.Added;
+
+            context.SaveChanges();
+
             var recenzija1 = new Recenzija()
             {
 
@@ -527,7 +812,6 @@ namespace NextGame
                 Sadrzaj = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget posuere mi, id interdum odio. ",
                 VrijemeIgranja = 120
             };
-
             var recenzija2 = new Recenzija()
             {
 
@@ -543,9 +827,12 @@ namespace NextGame
             };
 
             context.Recenzije.Add(recenzija1);
-
             context.Recenzije.Add(recenzija2);
 
+            context.Entry<Recenzija>(recenzija1).State = EntityState.Added;
+            context.Entry<Recenzija>(recenzija2).State = EntityState.Added;
+
+            context.SaveChanges();
 
             var li1 = new ListaIgrica()
             {
@@ -557,7 +844,6 @@ namespace NextGame
                 Ocjena = 5,
                 Sati = 120,
             };
-
             var li2 = new ListaIgrica()
             {
 
@@ -568,7 +854,6 @@ namespace NextGame
                 Ocjena = 5,
                 Sati = 120,
             };
-
             var li3 = new ListaIgrica()
             {
 
@@ -580,6 +865,16 @@ namespace NextGame
                 Sati = 120,
             };
 
+            context.ListaIgrica.Add(li1);
+            context.ListaIgrica.Add(li2);
+            context.ListaIgrica.Add(li3);
+
+            context.Entry<ListaIgrica>(li1).State = EntityState.Added;
+            context.Entry<ListaIgrica>(li2).State = EntityState.Added;
+            context.Entry<ListaIgrica>(li3).State = EntityState.Added;
+
+            context.SaveChanges();
+
             var li4 = new ListaIgrica()
             {
 
@@ -590,17 +885,6 @@ namespace NextGame
                 Ocjena = 5,
                 Sati = 120,
             };
-
-            context.ListaIgrica.Add(li1);
-
-            context.ListaIgrica.Add(li2);
-
-            context.ListaIgrica.Add(li3);
-
-            context.ListaIgrica.Add(li4);
-
-
-
             var li5 = new ListaIgrica()
             {
 
@@ -611,7 +895,6 @@ namespace NextGame
                 Ocjena = 5,
                 Sati = 120,
             };
-
             var li6 = new ListaIgrica()
             {
 
@@ -623,6 +906,16 @@ namespace NextGame
                 Sati = 120,
             };
 
+            context.ListaIgrica.Add(li4);
+            context.ListaIgrica.Add(li5);
+            context.ListaIgrica.Add(li6);
+
+            context.Entry<ListaIgrica>(li4).State = EntityState.Added;
+            context.Entry<ListaIgrica>(li5).State = EntityState.Added;
+            context.Entry<ListaIgrica>(li6).State = EntityState.Added;
+
+            context.SaveChanges();
+
             var li7 = new ListaIgrica()
             {
 
@@ -633,7 +926,6 @@ namespace NextGame
                 Ocjena = 5,
                 Sati = 120,
             };
-
             var li8 = new ListaIgrica()
             {
 
@@ -644,20 +936,8 @@ namespace NextGame
                 Ocjena = 5,
                 Sati = 120,
             };
-
-            context.ListaIgrica.Add(li5);
-
-            context.ListaIgrica.Add(li6);
-
-            context.ListaIgrica.Add(li7);
-
-            context.ListaIgrica.Add(li8);
-
-
-
             var li9 = new ListaIgrica()
             {
-
                 KorisnikId = 3,
                 Korisnik = korisnik3,
                 IgricaId = 1,
@@ -665,6 +945,16 @@ namespace NextGame
                 Ocjena = 5,
                 Sati = 120,
             };
+
+            context.ListaIgrica.Add(li7);
+            context.ListaIgrica.Add(li8);
+            context.ListaIgrica.Add(li9);
+
+            context.Entry<ListaIgrica>(li7).State = EntityState.Added;
+            context.Entry<ListaIgrica>(li8).State = EntityState.Added;
+            context.Entry<ListaIgrica>(li9).State = EntityState.Added;
+
+            context.SaveChanges();
 
             var li10 = new ListaIgrica()
             {
@@ -676,7 +966,6 @@ namespace NextGame
                 Ocjena = 5,
                 Sati = 120,
             };
-
             var li11 = new ListaIgrica()
             {
 
@@ -687,7 +976,6 @@ namespace NextGame
                 Ocjena = 5,
                 Sati = 120,
             };
-
             var li12 = new ListaIgrica()
             {
 
@@ -699,13 +987,13 @@ namespace NextGame
                 Sati = 120,
             };
 
-            context.ListaIgrica.Add(li9);
-
             context.ListaIgrica.Add(li10);
-
             context.ListaIgrica.Add(li11);
-
             context.ListaIgrica.Add(li12);
+
+            context.Entry<ListaIgrica>(li10).State = EntityState.Added;
+            context.Entry<ListaIgrica>(li11).State = EntityState.Added;
+            context.Entry<ListaIgrica>(li12).State = EntityState.Added;
 
             context.SaveChanges();
         }

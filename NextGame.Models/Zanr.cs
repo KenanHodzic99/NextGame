@@ -8,5 +8,11 @@ namespace NextGame.Models
     {
         public int Id { get; set; }
         public string Naziv { get; set; }
+        public List<IgricaZanr> Igrice { get; set; }
+
+        public override string ToString()
+        {
+            return Naziv;
+        }
     }
 }

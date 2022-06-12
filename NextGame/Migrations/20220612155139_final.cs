@@ -60,6 +60,19 @@ namespace NextGame.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Platforme",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Naziv = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Platforme", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SystemRequirements",
                 columns: table => new
                 {
@@ -77,6 +90,19 @@ namespace NextGame.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Tipovi",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Naziv = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tipovi", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Uloge",
                 columns: table => new
                 {
@@ -87,6 +113,19 @@ namespace NextGame.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Uloge", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Zanrovi",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Naziv = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Zanrovi", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -134,9 +173,8 @@ namespace NextGame.Migrations
                     SystemRequirementsId = table.Column<int>(type: "int", nullable: false),
                     DatumIzdavanja = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IzdavackaKucaId = table.Column<int>(type: "int", nullable: false),
-                    Tip = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Cijena = table.Column<float>(type: "real", nullable: false),
-                    Zanrovi = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    TipId = table.Column<int>(type: "int", nullable: true),
+                    Cijena = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -153,6 +191,12 @@ namespace NextGame.Migrations
                         principalTable: "SystemRequirements",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Igrice_Tipovi_TipId",
+                        column: x => x.TipId,
+                        principalTable: "Tipovi",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -180,6 +224,54 @@ namespace NextGame.Migrations
                         principalTable: "Uloge",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "IgricePlatforme",
+                columns: table => new
+                {
+                    IgricaId = table.Column<int>(type: "int", nullable: false),
+                    PlatformaId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IgricePlatforme", x => new { x.IgricaId, x.PlatformaId });
+                    table.ForeignKey(
+                        name: "FK_IgricePlatforme_Igrice_IgricaId",
+                        column: x => x.IgricaId,
+                        principalTable: "Igrice",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_IgricePlatforme_Platforme_PlatformaId",
+                        column: x => x.PlatformaId,
+                        principalTable: "Platforme",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "IgriceZanrovi",
+                columns: table => new
+                {
+                    IgricaId = table.Column<int>(type: "int", nullable: false),
+                    ZanrId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IgriceZanrovi", x => new { x.IgricaId, x.ZanrId });
+                    table.ForeignKey(
+                        name: "FK_IgriceZanrovi_Igrice_IgricaId",
+                        column: x => x.IgricaId,
+                        principalTable: "Igrice",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_IgriceZanrovi_Zanrovi_ZanrId",
+                        column: x => x.ZanrId,
+                        principalTable: "Zanrovi",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -304,6 +396,21 @@ namespace NextGame.Migrations
                 column: "SystemRequirementsId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Igrice_TipId",
+                table: "Igrice",
+                column: "TipId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_IgricePlatforme_PlatformaId",
+                table: "IgricePlatforme",
+                column: "PlatformaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_IgriceZanrovi_ZanrId",
+                table: "IgriceZanrovi",
+                column: "ZanrId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Komentari_KorisnikId",
                 table: "Komentari",
                 column: "KorisnikId");
@@ -362,6 +469,12 @@ namespace NextGame.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "IgricePlatforme");
+
+            migrationBuilder.DropTable(
+                name: "IgriceZanrovi");
+
+            migrationBuilder.DropTable(
                 name: "Komentari");
 
             migrationBuilder.DropTable(
@@ -372,6 +485,12 @@ namespace NextGame.Migrations
 
             migrationBuilder.DropTable(
                 name: "Recenzije");
+
+            migrationBuilder.DropTable(
+                name: "Platforme");
+
+            migrationBuilder.DropTable(
+                name: "Zanrovi");
 
             migrationBuilder.DropTable(
                 name: "Objave");
@@ -396,6 +515,9 @@ namespace NextGame.Migrations
 
             migrationBuilder.DropTable(
                 name: "SystemRequirements");
+
+            migrationBuilder.DropTable(
+                name: "Tipovi");
         }
     }
 }
