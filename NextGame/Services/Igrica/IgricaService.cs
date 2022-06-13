@@ -277,7 +277,9 @@ namespace NextGame.Services
                 model = est.Fit(traindata);
             }
 
-            var allItems = _dbContext.Igrice.Where(x => x.Id != id);
+            var allItems = _dbContext.Igrice.Include(x => x.IzdavackaKuca)
+                .Include(x => x.SystemRequirements).Include(x => x.Tip).Include(x => x.Platforme).Include(x => x.Zanrovi)
+                       .Where(x => x.Id != id);
 
             var predictionResult = new List<Tuple<Database.Igrica, float>>();
 
